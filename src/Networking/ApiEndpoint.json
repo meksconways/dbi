@@ -1,0 +1,10 @@
+{
+  "base_url": "https:/api.nereharcasam.com/secure/public/api/v1/",
+  "user_base_url":"https:/api.nereharcasam.com/secure/public/api/v1/user/",
+  "manager_base_url": "https:/api.nereharcasam.com/secure/public/api/v1/manager/",
+
+  "login": {
+    "url": "login",
+    "method": "post"
+  }
+}
