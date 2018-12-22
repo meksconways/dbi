@@ -3,6 +3,7 @@ import {fetchManagerDuyuruGet, fetchUsers} from "../../Networking/ApiFetchServic
 import {Grid} from "semantic-ui-react";
 import UserGridItem from "../../Components/UserGridItem";
 import DuyurularGridItem from "../../Components/DuyurularGridItem";
+import HeaderNameItem from "../../Components/HeaderNameItem";
 
 
 
@@ -55,23 +56,21 @@ export default class DuyurularPage extends Component{
 
     render() {
         return (
-            <Grid
-                style={{paddingTop:'2em',paddingLeft:'2em',paddingRight:'2em',paddingBottom:'2em'}}>
+            <div>
+                <HeaderNameItem title={"Duyurular"}/>
+                <Grid
+                    style={{paddingTop:'2em',paddingLeft:'2em',paddingRight:'2em',paddingBottom:'2em'}}>
+                    <Grid.Row textAlign={'center'} >
+                        {this.state.data.length > 0 ?
+                            this.state.data.map((m,i)=> {
 
-                <Grid.Row textAlign={'center'} >
-                    {this.state.data.length > 0 ?
-                        this.state.data.map((m,i)=> {
+                                return <DuyurularGridItem data={m}/>
 
-                            return <DuyurularGridItem data={m}/>
-
-                        })
-
-                        :null}
-                </Grid.Row>
-
-
-
-            </Grid>
+                            })
+                            :null}
+                    </Grid.Row>
+                </Grid>
+            </div>
         );
     }
 

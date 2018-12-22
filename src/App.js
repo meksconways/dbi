@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 
 import LoginPage from "./Pages/Login/LoginPage";
-import ManagerHomePage from "./Pages/Manager/ManagerHomePage";
 import {fetchCheckToken} from "./Networking/ApiFetchService";
 import UserHomePage from "./Pages/User/UserHomePage";
 import {BrowserRouter, Route} from "react-router-dom";
@@ -11,10 +10,11 @@ import VerificationCode from "./Pages/Login/VerificationCode";
 import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 import UsersPage from "./Pages/Manager/UsersPage";
 import DuyurularPage from "./Pages/Manager/DuyurularPage";
+import ManagerTopMenu from "./Pages/Manager/ManagerTopMenu";
+import ManagerSssPage from "./Pages/Manager/ManagerSssPage";
 
 
 class App extends Component {
-
     constructor(props){
         super(props);
 
@@ -25,9 +25,7 @@ class App extends Component {
 
     }
 
-
     tokenCheck = () => {
-
         fetchCheckToken(res => {
 
             if (res.status >= 400 && res.status < 500){
@@ -44,47 +42,36 @@ class App extends Component {
             }
 
         });
-
-
     };
 
     componentWillMount() {
-
         this.tokenCheck();
-
     }
-
 
     render() {
     return (
-
       <div>
-
           {this.state.isLogin ?
-
               <div>
 
                       {this.state.isAdmin ?
-                          <BrowserRouter>
-                              <div>
-                                  <Route exact path={"/"} component={ManagerHomePage}/>
-                                  <Route exact path={"/kullanicilar"} component={UsersPage}/>
-                                  <Route exact path={"/duyurular"} component={DuyurularPage}/>
-                              </div>
-                          </BrowserRouter>
-
-
+                                  <BrowserRouter>
+                                      <div>
+                                          <div><ManagerTopMenu/></div>
+                                          <div>
+                                              <Route exact path={"/"} component={UsersPage}/>
+                                              <Route exact path={"/duyurular"} component={DuyurularPage}/>
+                                              <Route exact path={"/sss"} component={ManagerSssPage}/>
+                                          </div>
+                                      </div>
+                                  </BrowserRouter>
                           : <BrowserRouter>
                               <div>
                                   <Route exact path={"/"} component={UserHomePage}/>
                               </div>
                           </BrowserRouter>
                       }
-
-
               </div>
-
-
               :
                 <div>
                     <BrowserRouter>
@@ -97,9 +84,7 @@ class App extends Component {
                         </div>
                     </BrowserRouter>
                 </div>
-
               }
-
       </div>
     );
   }

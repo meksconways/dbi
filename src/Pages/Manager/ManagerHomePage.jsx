@@ -4,6 +4,7 @@ import UsersPage from "./UsersPage";
 import SearchMenuBar from "../../Components/SearchMenuBar";
 import HeaderNameItem from "../../Components/HeaderNameItem";
 import DuyurularPage from "./DuyurularPage";
+import {NavLink} from "react-router-dom";
 
 
 export default class ManagerHomePage extends Component {
@@ -27,12 +28,16 @@ export default class ManagerHomePage extends Component {
                         <img src='https://react.semantic-ui.com/logo.png' />
                     </Menu.Item>
                     <Menu.Item header>Diyabetli Birey İzlem</Menu.Item>
-                    <Menu.Item
-                        name='Kullanıcılar'
-                        active={activeItem === 'Kullanıcılar'}
-                        onClick={this.handleItemClick}
-                    />
-                    <Menu.Item name='Duyurular' active={activeItem === 'Duyurular'} onClick={this.handleItemClick} />
+                    <NavLink to={"/"}>
+                        <Menu.Item
+                            name='Kullanıcılar'
+                            active={activeItem === 'Kullanıcılar'}
+                            onClick={this.handleItemClick}
+                        />
+                    </NavLink>
+                    <NavLink to={"/duyurular"}>
+                        <Menu.Item name='Duyurular' active={activeItem === 'Duyurular'} onClick={this.handleItemClick} />
+                    </NavLink>
 
                     <Menu.Item
                         name='SSS'

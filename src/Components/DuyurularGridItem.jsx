@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import { Card, Icon, Image,Grid } from 'semantic-ui-react'
+import {Card, Icon, Image, Grid, Divider, Button} from 'semantic-ui-react'
 import DuyuruDetayModal from "./DuyuruDetayModal";
 
 
@@ -33,17 +33,16 @@ export default class DuyurularGridItem extends Component {
                 <Card fluid >
 
                     <Card.Content>
-                        <Card.Header>Duyuru</Card.Header>
-                        <Card.Meta style={{color:'#212121'}} >{this.props.data.announcement}</Card.Meta>
+                        <Card.Header><Icon name={"announcement"} size={"large"}/></Card.Header>
+                        <Divider hidden={true}/>
+                        <Card.Meta style={{color:'#212121',whiteSpace:"noWrap",overflow:"hidden",textOverflow:"ellipsis"}} >{this.props.data.announcement}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                        <Card.Meta style={{color:'#109d58'}}>Oluşturulma Tarihi: &nbsp; {this.props.data.created_at}</Card.Meta>
+                        <Card.Meta style={{color:'#00b5ad'}}>Oluşturulma Tarihi: &nbsp; {this.props.data.created_at}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                        <a onClick={() => this.setState({duyuruDetayVisibility:true})}>
-                            <Icon name='announcement' />
-                            Duyuruyu Gör
-                        </a>
+                        <Button compact color='teal' content='Detay'  fluid onClick={() => this.setState({duyuruDetayVisibility:true})} />
+
                     </Card.Content>
                 </Card>
                 {this.state.duyuruDetayVisibility ? <DuyuruDetayModal data={this.props.data}
