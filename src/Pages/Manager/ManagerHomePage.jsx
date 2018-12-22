@@ -10,7 +10,10 @@ export default class ManagerHomePage extends Component {
 
     state = {activeItem: 'Kullanıcılar'};
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    handleItemClick = (e, { name }) => {
+        this.setState({ activeItem: name });
+     //   this.selectDownPage(this.state.activeItem);
+    } ;
 
 
 
@@ -67,10 +70,30 @@ export default class ManagerHomePage extends Component {
 
                 <HeaderNameItem title={this.state.activeItem}/>
 
-               <DuyurularPage/>
+               <div>
+                   {this.selectDownPage(this.state.activeItem)}
+               </div>
 
             </div>
         );
+    }
+
+    selectDownPage = (state) => {
+
+
+
+        switch (state) {
+
+            case 'Kullanıcılar':
+                return <UsersPage/>
+
+            case 'Duyurular':
+                return <DuyurularPage/>
+
+
+        }
+
+
     }
 
 

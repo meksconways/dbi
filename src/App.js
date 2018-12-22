@@ -9,6 +9,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import RegisterPage from "./Pages/User/RegisterPage";
 import VerificationCode from "./Pages/Login/VerificationCode";
 import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
+import UsersPage from "./Pages/Manager/UsersPage";
+import DuyurularPage from "./Pages/Manager/DuyurularPage";
 
 
 class App extends Component {
@@ -66,6 +68,8 @@ class App extends Component {
                           <BrowserRouter>
                               <div>
                                   <Route exact path={"/"} component={ManagerHomePage}/>
+                                  <Route exact path={"/kullanicilar"} component={UsersPage}/>
+                                  <Route exact path={"/duyurular"} component={DuyurularPage}/>
                               </div>
                           </BrowserRouter>
 

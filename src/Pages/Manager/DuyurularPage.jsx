@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {fetchManagerSSSGet, fetchUsers} from "../../Networking/ApiFetchService";
+import {fetchManagerDuyuruGet, fetchUsers} from "../../Networking/ApiFetchService";
 import {Grid} from "semantic-ui-react";
 import UserGridItem from "../../Components/UserGridItem";
 import DuyurularGridItem from "../../Components/DuyurularGridItem";
@@ -20,7 +20,7 @@ export default class DuyurularPage extends Component{
 
     getSSS = () =>{
 
-        fetchManagerSSSGet(res=>{
+        fetchManagerDuyuruGet(res=>{
 
             console.log(res);
 
@@ -49,6 +49,7 @@ export default class DuyurularPage extends Component{
     };
 
     componentWillMount() {
+        document.title = 'Duyurular • Diyabetli Birey İzlem';
         this.getSSS()
     }
 

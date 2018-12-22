@@ -1,18 +1,29 @@
 import React, {Component} from 'react'
 
 import { Card, Icon, Image,Grid } from 'semantic-ui-react'
+import DuyuruDetayModal from "./DuyuruDetayModal";
 
 
 export default class DuyurularGridItem extends Component {
 
     constructor(props){
-        super(props)
+        super(props);
+        this.state = {
+            duyuruDetayVisibility:false
+        }
     }
 
-    //props.data.id
-    //props.data.text
-    //props.data.createdat
-    //props.data.updatedat
+    handleModalClose = () =>{
+
+        this.setState({duyuruDetayVisibility:false})
+
+    };
+
+    handleModelDelete() {
+
+
+
+    }
 
     render() {
         return (
@@ -23,19 +34,25 @@ export default class DuyurularGridItem extends Component {
 
                     <Card.Content>
                         <Card.Header>Duyuru</Card.Header>
-                        <Card.Meta>{this.props.data.announcement}</Card.Meta>
+                        <Card.Meta style={{color:'#212121'}} >{this.props.data.announcement}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                        <Card.Meta>Oluşturulma Tarihi: {this.props.data.created_at}</Card.Meta>
+                        <Card.Meta style={{color:'#109d58'}}>Oluşturulma Tarihi: &nbsp; {this.props.data.created_at}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                        <a>
+                        <a onClick={() => this.setState({duyuruDetayVisibility:true})}>
                             <Icon name='announcement' />
                             Duyuruyu Gör
                         </a>
                     </Card.Content>
                 </Card>
+                {this.state.duyuruDetayVisibility ? <DuyuruDetayModal data={this.props.data}
+                                                                      call={this.handleModalClose}
+                                                                      />
+
+                                                                        : null}
             </Grid.Column>
+
 
 
 

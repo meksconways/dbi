@@ -32,10 +32,17 @@ export const sign_phone_url={
 
 };
 
-export const manager_sss_get_url = {
+export const manager_duyuru_get_url = {
 
-    url:Apiendpoint.manager_base_url+Apiendpoint.manager_sss_get.url,
-    method:Apiendpoint.manager_sss_get.method
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_duyurular_get.url,
+    method:Apiendpoint.manager_duyurular_get.method
+
+};
+
+export const manager_duyuru_delete_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_duyuru_delete.url,
+    method:Apiendpoint.manager_duyuru_delete.method
 
 };
 

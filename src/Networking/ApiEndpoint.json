@@ -25,23 +25,22 @@
     "method": "post"
   },
 
-  "manager_sss_get": {
+  "manager_duyurular_get": {
     "url": "announcements",
     "method": "get"
   },
-  "manager_sss_post": {
+  "manager_duyuru_post": {
     "url": "announcements",
     "method": "post"
   },
-  "manager_sss_delete": {
+  "manager_duyuru_delete": {
     "url": "announcements",
     "method": "delete"
   },
-  "manager_sss_patch": {
+  "manager_duyuru_patch": {
     "url": "announcements",
     "method": "patch"
   }
-
 
 
 

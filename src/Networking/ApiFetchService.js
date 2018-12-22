@@ -2,8 +2,8 @@
 import axios from 'axios'
 import {
     check_token_url,
-    login_url,
-    manager_sss_get_url,
+    login_url, manager_duyuru_delete_url,
+    manager_duyuru_get_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -102,14 +102,14 @@ export const fetchPhoneSign = function (data,callback) {
 
 };
 
-export const fetchManagerSSSGet = function (callback) {
+export const fetchManagerDuyuruGet = function (callback) {
 
     axios({
         headers:{
             'token':localStorage.getItem('token')
         },
-        method:manager_sss_get_url.method,
-        url:manager_sss_get_url.url,
+        method:manager_duyuru_get_url.method,
+        url:manager_duyuru_get_url.url,
 
     }).then(res=>{
         callback(res)
@@ -117,6 +117,25 @@ export const fetchManagerSSSGet = function (callback) {
         .catch(err => {
             callback(err)
         })
+
+};
+
+export const fetchManagerDuyuruDelete = function (id,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_duyuru_delete_url.method,
+        url:manager_duyuru_delete_url.url+'/'+id,
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
 
 };
 

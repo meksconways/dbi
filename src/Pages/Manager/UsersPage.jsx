@@ -18,6 +18,8 @@ export default class UsersPage extends Component{
     }
 
 
+
+
     getUsers = () =>{
 
         fetchUsers(res=>{
@@ -46,7 +48,10 @@ export default class UsersPage extends Component{
 
     };
 
+
+
     componentWillMount() {
+        document.title = 'Kullanıcılar • Diyabetli Birey İzlem';
         this.getUsers()
     }
 
