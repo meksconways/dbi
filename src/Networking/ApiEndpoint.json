@@ -6,5 +6,26 @@
   "login": {
     "url": "login",
     "method": "post"
+  },
+  "register": {
+    "url": "register",
+    "method": "post"
+  },
+  "users": {
+    "url": "users",
+    "method": "get"
+  },
+
+  "token_check": {
+    "url": "check_auth",
+    "method": "get"
+  },
+  "phone_sign": {
+    "url": "sign_phone",
+    "method": "post"
   }
+
+
+
+
 }

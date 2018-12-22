@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Button, Card, Divider, Form, Grid, Header, Icon, Input, Segment} from 'semantic-ui-react'
 
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect, Route} from "react-router-dom";
 import {fetchLogin} from "../../Networking/ApiFetchService";
 import ErrorMessage from "../../Components/ErrorMessage";
+import VerificationCode from "./VerificationCode";
 
 
 export default class LoginPage extends Component{
@@ -13,6 +14,7 @@ export default class LoginPage extends Component{
         this.state = {
             buttonDisabled:true,
             loading:false,
+            user_id:0,
             errorMessage:[],
             data:{
                 email:"",
@@ -80,6 +82,8 @@ export default class LoginPage extends Component{
             this.setState({errorMessage:[]});
             this.setState({loading:false});
 
+            console.log(typeof res);
+
             if ((typeof res).toString() === "undefined") {
 
                 this.setState({errorMessage:["Sunucu ile bağlantı hatası yaşandı"]})
@@ -92,20 +96,19 @@ export default class LoginPage extends Component{
 
                 } else if (res.status >=200 && res.status < 300) {
 
-                    localStorage.setItem('token',res.data.data.token);
 
+                    /*VerificationCode.setState({data:{
+                        user_id:res.data.data.user_id,
+                            key:""
+                        }}); */
+
+                    this.props.history.push('/verification/'+res.data.data.userid);
 
                 }
 
-
-
             }
 
-
-
             });
-
-
 
     };
 
@@ -115,25 +118,30 @@ export default class LoginPage extends Component{
             <Segment
                 basic
                 loading = {this.state.loading}
+
                >
                 <Grid
+                    textAlign='center' style={{height:'100vh',backgroundColor:'#fafafa'}} verticalAlign='middle'
 
-                    textAlign={'center'}
-                    style={{paddingTop:'8em'}}
 
                 >
 
-                    <Grid.Row
-
+                    <Grid.Column
+                        computer={4} tablet={8} mobile={16}
                     >
 
-                        <Card>
+                        <Card fluid>
                             <Card.Content>
                                 <Card.Header style={{textAlign:'center'}}>Giriş Yap</Card.Header>
+                                <Divider clearing={true}
+                                         hidden
+                                >
+
+                                </Divider>
                                 <Card.Meta>
                                     <Form>
                                         <Form.Field>
-                                            <label>E-Posta</label>
+                                            <label style={{textAlign:'left'}}>E-Posta</label>
                                             <Input iconPosition='left'
                                                    placeholder='Email'
                                                    type = 'Email'
@@ -143,7 +151,7 @@ export default class LoginPage extends Component{
                                             </Input>
                                         </Form.Field>
                                         <Form.Field>
-                                            <label>Parola</label>
+                                            <label style={{textAlign:'left'}}>Parola</label>
                                             <Input iconPosition='left' placeholder='Parola' type ='Password'
                                                    onChange={this.handlePasswordChange}>
                                                 <Icon name='lock' />
@@ -159,7 +167,7 @@ export default class LoginPage extends Component{
 
                                         <Button inverted color='green'
                                                 fluid
-                                                circular
+                                                style={{borderRadius:'7px'}}
                                                 disabled={this.state.buttonDisabled}
                                                 onClick={this.login}
                                         >
@@ -181,10 +189,6 @@ export default class LoginPage extends Component{
 
                                                 :null}
 
-
-
-
-
                                         <Form.Field>
                                             <Button color='facebook'
                                                     fluid
@@ -196,7 +200,7 @@ export default class LoginPage extends Component{
                                             <Button color='google plus'
                                                     fluid
                                             >
-                                                <Icon name='google plus' /> Google + ile Giriş Yap
+                                                <Icon name='google plus' /> Google ile Giriş Yap
                                             </Button>
                                         </Form.Field>
 
@@ -208,14 +212,16 @@ export default class LoginPage extends Component{
 
                         </Card>
 
-                    </Grid.Row>
-                    <Segment basic>Hesabın yok mu ? &nbsp;
-                        <NavLink to={'/register'}>
-                           Kaydol
-                        </NavLink>
+                        <Segment basic style={{textAlign:'center'}}>
+                            Hesabın yok mu ? &nbsp;
+                            <NavLink to={'/register'}>
+                                Kaydol
+                            </NavLink>
 
 
-                    </Segment>
+                        </Segment>
+                    </Grid.Column>
+
 
                 </Grid>
             </Segment>
