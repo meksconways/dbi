@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
-import {Grid, Menu,} from 'semantic-ui-react'
-import {fetchUsers} from "../../Networking/ApiFetchService";
-import {Redirect} from "react-router-dom";
-import ErrorMessage from "../../Components/ErrorMessage";
+import {fetchManagerSSSGet, fetchUsers} from "../../Networking/ApiFetchService";
+import {Grid} from "semantic-ui-react";
 import UserGridItem from "../../Components/UserGridItem";
+import DuyurularGridItem from "../../Components/DuyurularGridItem";
 
 
 
-export default class UsersPage extends Component{
+export default class DuyurularPage extends Component{
+
+
 
     constructor(props) {
         super(props);
@@ -17,16 +18,17 @@ export default class UsersPage extends Component{
         }
     }
 
+    getSSS = () =>{
 
-    getUsers = () =>{
+        fetchManagerSSSGet(res=>{
 
-        fetchUsers(res=>{
+            console.log(res);
 
             this.setState({loading:false});
 
             if ((typeof res).toString() === "undefined") {
 
-               // route login
+                // route login
 
             }else{
 
@@ -47,19 +49,19 @@ export default class UsersPage extends Component{
     };
 
     componentWillMount() {
-        this.getUsers()
+        this.getSSS()
     }
 
     render() {
         return (
             <Grid
-                  style={{paddingTop:'2em',paddingLeft:'2em',paddingRight:'2em',paddingBottom:'2em'}}>
+                style={{paddingTop:'2em',paddingLeft:'2em',paddingRight:'2em',paddingBottom:'2em'}}>
 
                 <Grid.Row textAlign={'center'} >
                     {this.state.data.length > 0 ?
                         this.state.data.map((m,i)=> {
 
-                            return <UserGridItem data={m}/>
+                            return <DuyurularGridItem data={m}/>
 
                         })
 
@@ -69,11 +71,6 @@ export default class UsersPage extends Component{
 
 
             </Grid>
-
-
-
-
-
         );
     }
 

@@ -23,6 +23,23 @@
   "phone_sign": {
     "url": "sign_phone",
     "method": "post"
+  },
+
+  "manager_sss_get": {
+    "url": "announcements",
+    "method": "get"
+  },
+  "manager_sss_post": {
+    "url": "announcements",
+    "method": "post"
+  },
+  "manager_sss_delete": {
+    "url": "announcements",
+    "method": "delete"
+  },
+  "manager_sss_patch": {
+    "url": "announcements",
+    "method": "patch"
   }
 
 

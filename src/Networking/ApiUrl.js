@@ -32,4 +32,11 @@ export const sign_phone_url={
 
 };
 
+export const manager_sss_get_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_sss_get.url,
+    method:Apiendpoint.manager_sss_get.method
+
+};
+
 

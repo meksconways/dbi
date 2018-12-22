@@ -3,6 +3,7 @@ import {Dropdown, Input, Menu,} from 'semantic-ui-react'
 import UsersPage from "./UsersPage";
 import SearchMenuBar from "../../Components/SearchMenuBar";
 import HeaderNameItem from "../../Components/HeaderNameItem";
+import DuyurularPage from "./DuyurularPage";
 
 
 export default class ManagerHomePage extends Component {
@@ -64,11 +65,9 @@ export default class ManagerHomePage extends Component {
 
                 </Menu>
 
-
-
                 <HeaderNameItem title={this.state.activeItem}/>
 
-                <UsersPage/>
+               <DuyurularPage/>
 
             </div>
         );

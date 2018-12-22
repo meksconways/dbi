@@ -8,6 +8,7 @@ import UserHomePage from "./Pages/User/UserHomePage";
 import {BrowserRouter, Route} from "react-router-dom";
 import RegisterPage from "./Pages/User/RegisterPage";
 import VerificationCode from "./Pages/Login/VerificationCode";
+import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
 
         this.state = {
             isAdmin:false,
-            login:false
+            isLogin:false
         }
 
     }
@@ -25,83 +26,29 @@ class App extends Component {
 
     tokenCheck = () => {
 
-        fetchCheckToken(res =>{
+        fetchCheckToken(res => {
 
-            if ((typeof res).toString() === "undefined") {
+            if (res.status >= 400 && res.status < 500){
 
-                this.setState({})
-
-            }else{
-
-                if (res.status >= 400 && res.status <= 500){
+                this.setState({isAdmin:false});
+                this.setState({isLogin:false});
 
 
-                    this.setState({isAdmin: false});
-                    this.setState({login:false});
+            } else if (res.status >=200 && res.status < 300) {
 
-
-                } else if (res.status >=200 && res.status < 300) {
-
-
-                    let isAdmin = res.data.data.is_admin;
-
-                    if (isAdmin === 1){
-
-
-                        localStorage.setItem('is_admin',1);
-                        this.setState({isAdmin: true});
-                        this.setState({login:true});
-
-
-                    }else{
-                        localStorage.setItem('is_admin',0);
-                        this.setState({isAdmin: false});
-                        this.setState({login:true});
-
-                    }
-
-
-
-
-
-                }
-
-
+                this.setState({isAdmin:true});
+                this.setState({isLogin:true});
 
             }
 
-
-
         });
-
-
 
 
     };
 
     componentWillMount() {
 
-        let token = localStorage.getItem('token');
-        let isAdmin = localStorage.getItem('is_admin');
-
-        console.log(token === null);
-
-        if(token === null){
-
-
-
-            this.setState({isAdmin: false});
-            this.setState({login:false});
-
-
-
-        }else{
-
-
-            this.tokenCheck();
-
-        }
-
+        this.tokenCheck();
 
     }
 
@@ -109,12 +56,9 @@ class App extends Component {
     render() {
     return (
 
-
-
-
       <div>
 
-          {this.state.login ?
+          {this.state.isLogin ?
 
               <div>
 
@@ -130,7 +74,8 @@ class App extends Component {
                               <div>
                                   <Route exact path={"/"} component={UserHomePage}/>
                               </div>
-                          </BrowserRouter>}
+                          </BrowserRouter>
+                      }
 
 
               </div>

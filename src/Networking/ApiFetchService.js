@@ -1,6 +1,13 @@
 
 import axios from 'axios'
-import {check_token_url, login_url, manager_users_url, register_url, sign_phone_url} from "./ApiUrl";
+import {
+    check_token_url,
+    login_url,
+    manager_sss_get_url,
+    manager_users_url,
+    register_url,
+    sign_phone_url
+} from "./ApiUrl";
 
 
 
@@ -94,3 +101,23 @@ export const fetchPhoneSign = function (data,callback) {
         })
 
 };
+
+export const fetchManagerSSSGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_sss_get_url.method,
+        url:manager_sss_get_url.url,
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+

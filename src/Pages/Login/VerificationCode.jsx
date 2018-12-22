@@ -35,23 +35,35 @@ export default class VerificationCode extends Component {
 
         this.setState({buttonLoading:true});
 
+
+
+
         fetchPhoneSign(this.state.data,res=>{
 
+
+
             if ((typeof res).toString() === "undefined") {
+
+                console.log('500');
 
                 this.setState({errorMessage:["Sunucu ile bağlantı hatası yaşandı"]});
 
             }else{
 
-                if (res.status >= 400 && res.status < 500){
 
+                if (res.status >= 400 && res.status < 500){
+                    console.log('400');
                     this.setState({errorMessage:res.data.errors})
 
                 } else if (res.status >=200 && res.status < 300) {
-
-                    const rootJsonObj = JSON.parse(res.data);
-
+                    console.log('200');
+                    const rootJsonObj = res.data;
                     console.log(rootJsonObj);
+
+                    localStorage.setItem('token',rootJsonObj.data.token);
+                    localStorage.setItem('is_admin',rootJsonObj.data.is_admin);
+
+                   // window.location.href = '/';
 
 
 
