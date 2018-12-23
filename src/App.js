@@ -11,7 +11,7 @@ import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 import UsersPage from "./Pages/Manager/UsersPage";
 import DuyurularPage from "./Pages/Manager/DuyurularPage";
 import ManagerTopMenu from "./Pages/Manager/ManagerTopMenu";
-import ManagerSssPage from "./Pages/Manager/ManagerSssPage";
+import ManagerFaqsPage from "./Pages/Manager/ManagerFaqsPage";
 import {Grid, Icon, Segment} from "semantic-ui-react";
 
 
@@ -74,7 +74,7 @@ class App extends Component {
                                           <div>
                                               <Route exact path={"/"} component={UsersPage}/>
                                               <Route path={"/duyurular"} component={DuyurularPage}/>
-                                              <Route path={"/sss"} component={ManagerSssPage}/>
+                                              <Route path={"/sss"} component={ManagerFaqsPage}/>
                                           </div>
                                       </div>
                                   </BrowserRouter>

@@ -2,8 +2,14 @@
 import axios from 'axios'
 import {
     check_token_url,
-    login_url, manager_duyuru_delete_url, manager_duyuru_ekle_url,
-    manager_duyuru_get_url, manager_duyuru_patch_url,
+    login_url,
+    manager_duyuru_delete_url,
+    manager_duyuru_ekle_url,
+    manager_duyuru_get_url,
+    manager_duyuru_patch_url, manager_faqs_delete_url,
+    manager_faqs_get_url,
+    manager_faqs_patch_url,
+    manager_faqs_post_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -179,6 +185,76 @@ export const fetchManagerDuyuruDelete = function (id,callback) {
             callback(err)
         })
 
+
+};
+export const fetchManagerFaqsGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_faqs_get_url.method,
+        url:manager_faqs_get_url.url
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+export const fetchManagerFaqsPost = function (data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_faqs_post_url.method,
+        url:manager_faqs_post_url.url,
+        data:data
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+export const fetchManagerFaqsPatch = function (id,data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_faqs_patch_url.method,
+        url:manager_faqs_patch_url.url+'/'+id,
+        data:data
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+export const fetchManagerFaqsDelete = function (id,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_faqs_delete_url.method,
+        url:manager_faqs_delete_url.url+'/'+id
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
 
 };
 

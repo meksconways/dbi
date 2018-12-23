@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Button, Form, Header, Icon, Image, Input, Modal, TextArea} from 'semantic-ui-react'
+import {Button, Form, Icon, Modal, TextArea} from 'semantic-ui-react'
 import {fetchManagerDuyuruDelete, fetchManagerDuyuruPatch} from "../Networking/ApiFetchService";
 
 export default class DuyuruDetayModal extends Component{

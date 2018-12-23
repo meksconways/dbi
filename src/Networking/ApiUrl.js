@@ -60,4 +60,32 @@ export const manager_duyuru_delete_url = {
 
 };
 
+export const manager_faqs_get_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_faqs_get.url,
+    method:Apiendpoint.manager_faqs_get.method
+
+};
+
+export const manager_faqs_post_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_faqs_post.url,
+    method:Apiendpoint.manager_faqs_post.method
+
+};
+export const manager_faqs_patch_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_faqs_patch.url,
+    method:Apiendpoint.manager_faqs_patch.method
+
+};
+export const manager_faqs_delete_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_faqs_delete.url,
+    method:Apiendpoint.manager_faqs_delete.method
+
+};
+
+
+
 

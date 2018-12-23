@@ -28,7 +28,6 @@ export default class DuyuruEkleModal extends Component{
 
     };
 
-
     duyuruEkle = () => {
 
         this.setState({buttonLoading:true});
