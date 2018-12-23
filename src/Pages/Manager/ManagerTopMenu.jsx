@@ -44,7 +44,7 @@ export default class ManagerTopMenu extends Component {
                         name='Şikayetler'
                        >
 
-                        <NavLink to={""}>Sikayetler</NavLink>
+                        <NavLink to={"/sikayetler"}>Sikayetler</NavLink>
                     </Menu.Item>
 
                     <Menu.Item

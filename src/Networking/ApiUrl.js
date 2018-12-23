@@ -60,6 +60,16 @@ export const manager_duyuru_delete_url = {
 
 };
 
+export const manager_sikayet_get_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_sikayet_get.url,
+    method:Apiendpoint.manager_sikayet_get.method
+};
+
+export const manager_sikayet_delete_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_sikayet_delete.url,
+    method:Apiendpoint.manager_sikayet_delete.method
+};
+
 export const manager_faqs_get_url = {
 
     url:Apiendpoint.manager_base_url+Apiendpoint.manager_faqs_get.url,

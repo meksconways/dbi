@@ -13,6 +13,7 @@ import DuyurularPage from "./Pages/Manager/DuyurularPage";
 import ManagerTopMenu from "./Pages/Manager/ManagerTopMenu";
 import ManagerFaqsPage from "./Pages/Manager/ManagerFaqsPage";
 import {Grid, Icon, Segment} from "semantic-ui-react";
+import ManagerSikayetPage from "./Pages/Manager/ManagerSikayetPage";
 
 
 class App extends Component {
@@ -75,6 +76,7 @@ class App extends Component {
                                               <Route exact path={"/"} component={UsersPage}/>
                                               <Route path={"/duyurular"} component={DuyurularPage}/>
                                               <Route path={"/sss"} component={ManagerFaqsPage}/>
+                                              <Route path={"/sikayetler"} component={ManagerSikayetPage}/>
                                           </div>
                                       </div>
                                   </BrowserRouter>

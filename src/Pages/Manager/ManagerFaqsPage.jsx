@@ -45,6 +45,7 @@ export default class ManagerFaqsPage extends Component{
     };
 
     componentWillMount() {
+        document.title = 'Sıkça Sorulan Sorular • Diyabetli Birey İzlem';
         this.getFaqs();
     }
 

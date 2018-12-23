@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Card, Icon, Image, Grid, Divider, Button} from 'semantic-ui-react'
+import {Button, Card, Divider, Grid, Icon} from 'semantic-ui-react'
 import DuyuruDetayModal from "./DuyuruDetayModal";
 
 
@@ -49,14 +49,6 @@ export default class DuyurularGridItem extends Component {
                         : null}
                 </Card>
             </Grid.Column>
-
-
-
-
-
-
-
-
 
         );
     }

@@ -26,6 +26,15 @@
   },
 
 
+  "manager_sikayet_get": {
+    "url": "complaints",
+    "method": "get"
+  },
+  "manager_sikayet_delete": {
+    "url": "complaints",
+    "method": "delete"
+  },
+
 
   "manager_faqs_get": {
     "url": "faqs",

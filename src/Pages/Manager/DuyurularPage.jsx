@@ -23,7 +23,7 @@ export default class DuyurularPage extends Component{
 
         fetchManagerDuyuruGet(res=>{
 
-            console.log(res);
+
 
             this.setState({loading:false});
 
