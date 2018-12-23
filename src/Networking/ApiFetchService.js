@@ -2,8 +2,8 @@
 import axios from 'axios'
 import {
     check_token_url,
-    login_url, manager_duyuru_delete_url,
-    manager_duyuru_get_url,
+    login_url, manager_duyuru_delete_url, manager_duyuru_ekle_url,
+    manager_duyuru_get_url, manager_duyuru_patch_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -117,6 +117,49 @@ export const fetchManagerDuyuruGet = function (callback) {
         .catch(err => {
             callback(err)
         })
+
+};
+
+export const fetchManagerDuyuruPost = function (data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token'),
+            'Content-Type':'application/json'
+        },
+        method:manager_duyuru_ekle_url.method,
+        url:manager_duyuru_ekle_url.url,
+        data:data
+
+    }).then(res => {
+        callback(res);
+    })
+        .catch(err => {
+            callback(err);
+        })
+
+};
+
+export const fetchManagerDuyuruPatch = function (id,data,callback) {
+
+    axios({
+
+      headers : {
+          'token':localStorage.getItem('token'),
+          'Content-Type':'application/json',
+
+      },
+      method : manager_duyuru_patch_url.method,
+        url:manager_duyuru_patch_url.url+'/'+id,
+        data:data
+
+    }).then(res =>{
+        callback(res)
+    })
+        .catch(err =>{
+            callback(err)
+        })
+
 
 };
 

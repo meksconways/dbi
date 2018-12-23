@@ -28,8 +28,11 @@ export default class DuyurularGridItem extends Component {
     render() {
         return (
 
-            <Grid.Column computer={4} tablet={8} mobile={16}
-                         style={{paddingBottom:'2em'}}>
+            <Grid.Column
+                computer={4} tablet={8} mobile={16}
+                style={{paddingBottom:'2em'}}
+
+            >
                 <Card fluid >
 
                     <Card.Content>
@@ -44,13 +47,16 @@ export default class DuyurularGridItem extends Component {
                         <Button compact color='teal' content='Detay'  fluid onClick={() => this.setState({duyuruDetayVisibility:true})} />
 
                     </Card.Content>
-                </Card>
-                {this.state.duyuruDetayVisibility ? <DuyuruDetayModal data={this.props.data}
-                                                                      call={this.handleModalClose}
-                                                                      />
+                    {this.state.duyuruDetayVisibility ? <DuyuruDetayModal data={this.props.data}
+                                                                          call={this.handleModalClose}
+                        />
 
-                                                                        : null}
+                        : null}
+                </Card>
             </Grid.Column>
+
+
+
 
 
 

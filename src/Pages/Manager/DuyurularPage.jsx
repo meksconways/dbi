@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import {fetchManagerDuyuruGet, fetchUsers} from "../../Networking/ApiFetchService";
-import {Grid} from "semantic-ui-react";
-import UserGridItem from "../../Components/UserGridItem";
+import {fetchManagerDuyuruGet} from "../../Networking/ApiFetchService";
+import {Button, Grid} from "semantic-ui-react";
 import DuyurularGridItem from "../../Components/DuyurularGridItem";
 import HeaderNameItem from "../../Components/HeaderNameItem";
-
+import DuyuruEkleModal from "../../Components/DuyuruEkleModal";
 
 
 export default class DuyurularPage extends Component{
@@ -15,11 +14,12 @@ export default class DuyurularPage extends Component{
         super(props);
         this.state = {
             loading:false,
-            data:[]
+            data:[],
+            duyuruEkleModal:false
         }
     }
 
-    getSSS = () =>{
+    getDuyurular = () =>{
 
         fetchManagerDuyuruGet(res=>{
 
@@ -39,7 +39,10 @@ export default class DuyurularPage extends Component{
 
                 } else if (res.status >=200 && res.status < 300) {
 
+
+
                     this.setState({data:res.data.data});
+
 
                 }
 
@@ -51,16 +54,39 @@ export default class DuyurularPage extends Component{
 
     componentWillMount() {
         document.title = 'Duyurular • Diyabetli Birey İzlem';
-        this.getSSS()
+        this.getDuyurular()
     }
+
+    handleDuyuruEkleModalClose = () => {
+
+        this.setState({duyuruEkleModal:false})
+
+
+    };
+
+    onClickDuyuruEkle = () =>{
+
+        this.setState({duyuruEkleModal:true})
+
+    };
 
     render() {
         return (
             <div>
                 <HeaderNameItem title={"Duyurular"}/>
+                <Button compact color='teal' style={{marginLeft:'2em'}}
+                        onClick={this.onClickDuyuruEkle}
+
+                >Duyuru Ekle</Button>
+
+                {
+                    this.state.duyuruEkleModal ?  <DuyuruEkleModal closeCall={this.handleDuyuruEkleModalClose}/> : null
+                }
+
                 <Grid
                     style={{paddingTop:'2em',paddingLeft:'2em',paddingRight:'2em',paddingBottom:'2em'}}>
                     <Grid.Row textAlign={'center'} >
+
                         {this.state.data.length > 0 ?
                             this.state.data.map((m,i)=> {
 
@@ -69,6 +95,7 @@ export default class DuyurularPage extends Component{
                             })
                             :null}
                     </Grid.Row>
+
                 </Grid>
             </div>
         );

@@ -35,9 +35,6 @@ export default class VerificationCode extends Component {
 
         this.setState({buttonLoading:true});
 
-
-
-
         fetchPhoneSign(this.state.data,res=>{
 
 

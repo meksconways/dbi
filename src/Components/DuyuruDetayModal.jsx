@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 import {Button, Form, Header, Icon, Image, Input, Modal, TextArea} from 'semantic-ui-react'
-import {fetchManagerDuyuruDelete} from "../Networking/ApiFetchService";
+import {fetchManagerDuyuruDelete, fetchManagerDuyuruPatch} from "../Networking/ApiFetchService";
 
 export default class DuyuruDetayModal extends Component{
 
@@ -33,13 +33,10 @@ export default class DuyuruDetayModal extends Component{
 
             }
 
-
-
         });
 
 
     };
-
 
     handleText =(e,v)=>{
         this.setState({announcement:v.value});
@@ -50,6 +47,31 @@ export default class DuyuruDetayModal extends Component{
         }
     };
 
+    duyuruDuzenle = () =>{
+
+        fetchManagerDuyuruPatch(this.state.data.id,{announcement: this.state.announcement},res =>{
+
+            console.log(res);
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+
+                } else if (res.status >=200 && res.status < 300) {
+                    window.location.href="/duyurular";
+                }
+
+            }
+
+
+        });
+
+    };
 
     componentWillMount() {
 
@@ -67,8 +89,11 @@ export default class DuyuruDetayModal extends Component{
 
                         <Modal.Description>
                             <Form>
-                                <TextArea onChange={this.handleText} autoHeight placeholder='Duyuru Düzenle' style={{ minHeight: 100 }}
-                                 value={this.state.announcement}
+                                <TextArea onChange={this.handleText}
+                                          autoHeight
+                                          placeholder='Duyuru Düzenle'
+                                          style={{ minHeight: 100 }}
+                                          value={this.state.announcement}
                                 />
                             </Form>
                         </Modal.Description>
@@ -76,7 +101,7 @@ export default class DuyuruDetayModal extends Component{
                     <Modal.Actions>
                         {
                             !this.state.isSameText ?
-                                <Button style={{backgroundColor:"#109d58",color:"white"}} >
+                                <Button style={{backgroundColor:"#109d58",color:"white"}} onClick={this.duyuruDuzenle}>
                                     <Icon name='edit' /> Güncelle
                                 </Button>
                                 :null

@@ -39,6 +39,20 @@ export const manager_duyuru_get_url = {
 
 };
 
+export const manager_duyuru_ekle_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_duyuru_post.url,
+    method:Apiendpoint.manager_duyuru_post.method
+
+};
+
+export const manager_duyuru_patch_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_duyuru_patch.url,
+    method:Apiendpoint.manager_duyuru_patch.method
+
+};
+
 export const manager_duyuru_delete_url = {
 
     url:Apiendpoint.manager_base_url+Apiendpoint.manager_duyuru_delete.url,
