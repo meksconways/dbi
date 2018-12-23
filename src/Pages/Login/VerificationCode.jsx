@@ -63,7 +63,7 @@ export default class VerificationCode extends Component {
                     localStorage.setItem('token',rootJsonObj.data.token);
                     localStorage.setItem('is_admin',rootJsonObj.data.is_admin);
 
-                   // window.location.href = '/';
+                    window.location.href = '/';
 
 
 

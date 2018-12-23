@@ -12,6 +12,7 @@ import UsersPage from "./Pages/Manager/UsersPage";
 import DuyurularPage from "./Pages/Manager/DuyurularPage";
 import ManagerTopMenu from "./Pages/Manager/ManagerTopMenu";
 import ManagerSssPage from "./Pages/Manager/ManagerSssPage";
+import {Grid, Icon, Segment} from "semantic-ui-react";
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
 
         this.state = {
             isAdmin:false,
-            isLogin:false
+            isLogin:"0"
         }
 
     }
@@ -28,18 +29,29 @@ class App extends Component {
     tokenCheck = () => {
         fetchCheckToken(res => {
 
-            if (res.status >= 400 && res.status < 500){
-
+            if((typeof res.data)==="undefined"){
                 this.setState({isAdmin:false});
-                this.setState({isLogin:false});
+                this.setState({isLogin:"1"});
+                if(window.location.pathname!=="/") window.location.href="/";
+
+            }else{
+                if (res.status >= 400 && res.status <= 500){
+
+                    this.setState({isAdmin:false});
+                    this.setState({isLogin:"1"});
+                    if(window.location.pathname!=="/") window.location.href="/";
 
 
-            } else if (res.status >=200 && res.status < 300) {
 
-                this.setState({isAdmin:true});
-                this.setState({isLogin:true});
+                } else if (res.status >=200 && res.status < 300) {
 
+                    this.setState({isAdmin:true});
+                    this.setState({isLogin:"2"});
+
+                }
             }
+
+
 
         });
     };
@@ -51,7 +63,8 @@ class App extends Component {
     render() {
     return (
       <div>
-          {this.state.isLogin ?
+
+          {this.state.isLogin==="2" ?
               <div>
 
                       {this.state.isAdmin ?
@@ -60,8 +73,8 @@ class App extends Component {
                                           <div><ManagerTopMenu/></div>
                                           <div>
                                               <Route exact path={"/"} component={UsersPage}/>
-                                              <Route exact path={"/duyurular"} component={DuyurularPage}/>
-                                              <Route exact path={"/sss"} component={ManagerSssPage}/>
+                                              <Route path={"/duyurular"} component={DuyurularPage}/>
+                                              <Route path={"/sss"} component={ManagerSssPage}/>
                                           </div>
                                       </div>
                                   </BrowserRouter>
@@ -72,19 +85,40 @@ class App extends Component {
                           </BrowserRouter>
                       }
               </div>
-              :
-                <div>
-                    <BrowserRouter>
-                        <div>
-                            <Route exact path={"/"} component={LoginPage}/>
-                            <Route exact path={"/register"} component={RegisterPage}/>
-                            <Route exact path={"/login"} component={LoginPage}/>
-                            <Route exact path={"/verification/:user_id"} component={VerificationCode}/>
+              : null
 
-                        </div>
-                    </BrowserRouter>
-                </div>
               }
+
+
+          {this.state.isLogin==="1" ?
+              <div>
+                  <BrowserRouter>
+                      <div>
+                          <Route exact path={"/"} component={LoginPage}/>
+                          <Route  path={"/register"} component={RegisterPage}/>
+                          <Route  path={"/login"} component={LoginPage}/>
+                          <Route  path={"/verification/:user_id"} component={VerificationCode}/>
+
+                      </div>
+                  </BrowserRouter>
+              </div>
+              :null}
+
+          {this.state.isLogin==="0" ?
+              <div>
+                  <Segment basic>
+                      <Grid textAlign={"center"} style={{height:"100vh",backgroundColor:"#fafafa"}}>
+                          <Grid.Column computer={4} tablet={8} mobile={16}>
+                              <h1 style={{marginTop:"30vh",color:"#ccc"}}>
+                                  <Icon size={"large"} loading name='spinner' />
+                              </h1>
+                          </Grid.Column>
+
+                      </Grid>
+                  </Segment>
+              </div>
+
+              : null}
       </div>
     );
   }
