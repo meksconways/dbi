@@ -19,11 +19,6 @@ export default class DuyurularGridItem extends Component {
 
     };
 
-    handleModelDelete() {
-
-
-
-    }
 
     render() {
         return (
