@@ -6,10 +6,15 @@ import {
     manager_duyuru_delete_url,
     manager_duyuru_ekle_url,
     manager_duyuru_get_url,
-    manager_duyuru_patch_url, manager_faqs_delete_url,
+    manager_duyuru_patch_url,
+    manager_faqs_delete_url,
     manager_faqs_get_url,
     manager_faqs_patch_url,
-    manager_faqs_post_url, manager_sikayet_delete_url, manager_sikayet_get_url,
+    manager_faqs_post_url,
+    manager_profile_get_url, manager_profile_logout_url,
+    manager_profile_patch_url,
+    manager_sikayet_delete_url,
+    manager_sikayet_get_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -257,6 +262,63 @@ export const fetchManagerFaqsDelete = function (id,callback) {
         })
 
 };
+
+export const fetchManagerProfileGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_profile_get_url.method,
+        url:manager_profile_get_url.url
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+export const fetchManagerProfilePatch = function (data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_profile_patch_url.method,
+        url:manager_profile_patch_url.url,
+        data:data
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+export const fetchManagerProfileLogout = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_profile_logout_url.method,
+        url:manager_profile_logout_url.url,
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+
 
 
 export const fetchManagerSikayetDelete = function (id,callback) {

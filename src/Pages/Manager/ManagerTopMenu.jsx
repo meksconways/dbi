@@ -51,7 +51,7 @@ export default class ManagerTopMenu extends Component {
                         name='Profilim'
                         >
 
-                        <NavLink to={""}>Profilim</NavLink>
+                        <NavLink to={"/manager-profile"}>Profilim</NavLink>
                     </Menu.Item>
 
                 </Menu>

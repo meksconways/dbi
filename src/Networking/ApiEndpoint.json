@@ -26,6 +26,21 @@
   },
 
 
+  "manager_profile_get": {
+    "url": "profile",
+    "method": "get"
+  },
+  "manager_profile_patch": {
+    "url": "profile",
+    "method": "patch"
+  },
+  "manager_profile_logout": {
+    "url": "logout",
+    "method": "delete"
+  },
+
+
+
   "manager_sikayet_get": {
     "url": "complaints",
     "method": "get"

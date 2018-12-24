@@ -60,6 +60,28 @@ export const manager_duyuru_delete_url = {
 
 };
 
+export const manager_profile_get_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_profile_get.url,
+    method:Apiendpoint.manager_profile_get.method
+
+};
+
+export const manager_profile_patch_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_profile_patch.url,
+    method:Apiendpoint.manager_profile_patch.method
+
+};
+
+export const manager_profile_logout_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_profile_logout.url,
+    method:Apiendpoint.manager_profile_logout.method
+
+};
+
+
 export const manager_sikayet_get_url = {
     url:Apiendpoint.manager_base_url+Apiendpoint.manager_sikayet_get.url,
     method:Apiendpoint.manager_sikayet_get.method
