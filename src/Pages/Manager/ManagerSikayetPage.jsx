@@ -17,6 +17,7 @@ export default class ManagerSikayetPage extends Component{
 
 
 
+
     getSikayetler = () =>{
 
         fetchManagerSikayetGet(res =>{

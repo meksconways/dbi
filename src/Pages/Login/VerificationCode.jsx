@@ -41,7 +41,7 @@ export default class VerificationCode extends Component {
 
             if ((typeof res).toString() === "undefined") {
 
-                console.log('500');
+
 
                 this.setState({errorMessage:["Sunucu ile bağlantı hatası yaşandı"]});
 

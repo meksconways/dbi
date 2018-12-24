@@ -14,7 +14,7 @@ import {
     manager_profile_get_url, manager_profile_logout_url,
     manager_profile_patch_url,
     manager_sikayet_delete_url,
-    manager_sikayet_get_url,
+    manager_sikayet_get_url, manager_user_profile_delete_url, manager_user_profile_get_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -308,6 +308,42 @@ export const fetchManagerProfileLogout = function (callback) {
         },
         method:manager_profile_logout_url.method,
         url:manager_profile_logout_url.url,
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+export const fetchManagerUserProfileGet = function (id,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_user_profile_get_url.method,
+        url:manager_user_profile_get_url.url+'/'+id,
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+};
+
+export const fetchManagerUserProfileDelete = function (id,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_user_profile_delete_url.method,
+        url:manager_user_profile_delete_url.url+'/'+id,
 
     }).then(res=>{
         callback(res)

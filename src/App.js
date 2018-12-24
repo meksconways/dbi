@@ -15,6 +15,7 @@ import ManagerFaqsPage from "./Pages/Manager/ManagerFaqsPage";
 import {Grid, Icon, Segment} from "semantic-ui-react";
 import ManagerSikayetPage from "./Pages/Manager/ManagerSikayetPage";
 import ManagerProfile from "./Pages/Manager/ManagerProfile";
+import UserProfile from "./Pages/Manager/UserProfile";
 
 
 class App extends Component {
@@ -79,6 +80,7 @@ class App extends Component {
                                               <Route path={"/sss"} component={ManagerFaqsPage}/>
                                               <Route path={"/sikayetler"} component={ManagerSikayetPage}/>
                                               <Route path={"/manager-profile"} component={ManagerProfile}/>
+                                              <Route path={"/user/:user_id"} component={UserProfile}/>
                                           </div>
                                       </div>
                                   </BrowserRouter>

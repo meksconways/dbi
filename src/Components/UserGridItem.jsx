@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { Card, Icon, Image,Grid } from 'semantic-ui-react'
+import {Card, Icon, Image, Grid, Button} from 'semantic-ui-react'
+import {NavLink} from "react-router-dom";
 
 
 export default class UserGridItem extends Component{
@@ -8,6 +9,8 @@ export default class UserGridItem extends Component{
     constructor(props){
         super(props)
     }
+
+
 
 
     render() {
@@ -19,13 +22,14 @@ export default class UserGridItem extends Component{
 
                     <Card.Content>
                         <Card.Header>{this.props.data.name_surname}</Card.Header>
-                        <Card.Meta>{this.props.data.email}</Card.Meta>
+                        <Card.Meta style={{color:'#212121'}}>{this.props.data.email}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
-                        <a>
+                        <NavLink to={"/user/"+this.props.data.userid}>
                             <Icon name='user' />
                             Profili Gör
-                        </a>
+                        </NavLink>
+
                     </Card.Content>
                 </Card>
             </Grid.Column>

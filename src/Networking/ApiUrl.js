@@ -118,6 +118,16 @@ export const manager_faqs_delete_url = {
 
 };
 
+export const manager_user_profile_get_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_user_profile_get.url,
+    method:Apiendpoint.manager_user_profile_get.method
+};
+
+export const manager_user_profile_delete_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_user_profile_delete.url,
+    method:Apiendpoint.manager_user_profile_delete.method
+};
+
 
 
 

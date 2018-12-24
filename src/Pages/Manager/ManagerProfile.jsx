@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import HeaderNameItem from "../../Components/HeaderNameItem";
-import {Button, Divider, Form, Grid, Header, Icon, Search, Segment} from "semantic-ui-react";
-import DuyurularGridItem from "../../Components/DuyurularGridItem";
+import {Button, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
 import {fetchManagerProfileGet, fetchManagerProfilePatch} from "../../Networking/ApiFetchService";
-
-
 
 
 export default class ManagerProfile extends Component{

@@ -25,6 +25,16 @@
     "method": "post"
   },
 
+  "manager_user_profile_get": {
+    "url":"users",
+    "method": "get"
+  },
+  "manager_user_profile_delete": {
+    "url":"users",
+    "method": "delete"
+  },
+
+
 
   "manager_profile_get": {
     "url": "profile",

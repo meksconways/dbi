@@ -18,7 +18,7 @@ export default class ManagerTopMenu extends Component {
                     </Menu.Item>
 
                     <Menu.Item header>
-                        <NavLink to={""}>
+                        <NavLink to={"/"}>
                             Diyabetli Birey İzlem
                         </NavLink>
                     </Menu.Item>
