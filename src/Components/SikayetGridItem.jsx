@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Button, Card, Divider, Grid, Icon} from 'semantic-ui-react'
+import {Button, Card, Grid, Icon} from 'semantic-ui-react'
 import {fetchManagerSikayetDelete} from "../Networking/ApiFetchService";
 
 
@@ -67,7 +67,7 @@ export default class SikayetGridItem extends Component{
                     </Card.Content>
                     <Card.Content extra>
                         <Button color='red' fluid onClick={this.deleteSikayet}
-                                loading={this.state.buttonLoading}>Sil</Button>
+                                loading={this.state.buttonLoading}><Icon name={'trash alternate'}/>Kaldır</Button>
 
                     </Card.Content>
                 </Card>

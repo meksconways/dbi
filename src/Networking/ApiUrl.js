@@ -151,6 +151,20 @@ export const manager_biyolojik_degerler_post = {
 
 };
 
+export const manager_feedbacks_get_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_feedbacks_get.url,
+    method:Apiendpoint.manager_feedbacks_get.method
+
+};
+
+export const manager_feedbacks_delete_url = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_feedbacks_delete.url,
+    method:Apiendpoint.manager_feedbacks_delete.method
+
+};
+
 
 
 

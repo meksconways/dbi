@@ -48,6 +48,13 @@ export default class ManagerTopMenu extends Component {
                     </Menu.Item>
 
                     <Menu.Item
+                        name='Geri Bildirimler'
+                    >
+
+                        <NavLink to={"/feedbacks"}>Geri Bildirimler</NavLink>
+                    </Menu.Item>
+
+                    <Menu.Item
                         name='Profilim'
                         >
 

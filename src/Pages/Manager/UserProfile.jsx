@@ -130,7 +130,7 @@ export default class UserProfile extends Component{
                                 >
                                     <Button color='red' fluid style={{marginTop:'1em'}}
                                             onClick={() => this.setState({kanDegeriEkleModalVisibility:true})}
-                                    >Kan Değeri Ata</Button>
+                                    ><Icon name='heartbeat' />Kan Değeri Ata</Button>
 
                                     {this.state.kanDegeriEkleModalVisibility ? <KanDegeriEkleModal
                                             data={this.state.userData}
@@ -141,7 +141,7 @@ export default class UserProfile extends Component{
 
                                     <Button color='green' fluid style={{marginTop:'1em'}}
                                             onClick={() => this.setState({biyolojikDegerEkleModalVisibility:true})}
-                                    >Biyolojik Değer Ata</Button>
+                                    ><Icon name='user md' />Biyolojik Değer Ata</Button>
 
                                     {this.state.biyolojikDegerEkleModalVisibility ? <BiyolojikDegerEkleModal
                                             data={this.state.userData}
@@ -151,7 +151,9 @@ export default class UserProfile extends Component{
                                         : null}
 
 
-                                    <Button color='instagram' fluid style={{marginTop:'1em'}}>Kullanıcıyı Sil</Button>
+                                    <Button color='grey' fluid style={{marginTop:'1em'}}>
+                                        <Icon name='trash alternate outline' />
+                                        Kullanıcıyı Sil</Button>
 
 
 

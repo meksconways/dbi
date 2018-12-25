@@ -10,7 +10,7 @@ import {
     manager_faqs_delete_url,
     manager_faqs_get_url,
     manager_faqs_patch_url,
-    manager_faqs_post_url,
+    manager_faqs_post_url, manager_feedbacks_delete_url, manager_feedbacks_get_url,
     manager_kandegeri_delete,
     manager_kandegeri_get,
     manager_kandegeri_patch,
@@ -481,6 +481,43 @@ export const fetchManagerKanDegerleriDelete = function (id,callback) {
         },
         method:manager_kandegeri_delete.method,
         url:manager_kandegeri_delete.url,
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerFeedbacksGet = function (callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_feedbacks_get_url.method,
+        url:manager_feedbacks_get_url.url,
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+export const fetchManagerFeedbacksDelete = function (id,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_feedbacks_delete_url.method,
+        url:manager_feedbacks_delete_url.url+'/'+id,
 
 
     }).then(res=>{
