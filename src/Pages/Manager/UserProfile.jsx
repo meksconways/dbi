@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import HeaderNameItem from "../../Components/HeaderNameItem";
 import {fetchManagerUserProfileGet} from "../../Networking/ApiFetchService";
-import {Button, Divider, Grid, Header, Icon, Segment} from "semantic-ui-react";
+import {Button, Grid, Header, Icon, Segment} from "semantic-ui-react";
+import DuyuruDetayModal from "../../Components/DuyuruDetayModal";
+import KanDegeriEkleModal from "../../Components/KanDegeriEkleModal";
 
 
 export default class UserProfile extends Component{
@@ -11,10 +13,16 @@ export default class UserProfile extends Component{
         super(props);
         this.state = {
             userData:{},
-            userId:this.props.match.params.user_id
+            userId:this.props.match.params.user_id,
+            kanDegeriEkleModalVisibility:false
         }
 
     }
+    handleModalClose = () =>{
+
+        this.setState({kanDegeriEkleModalVisibility:false})
+
+    };
 
     componentWillMount() {
 
@@ -55,6 +63,8 @@ export default class UserProfile extends Component{
 
 
     };
+
+
 
     render() {
         return (
@@ -109,8 +119,19 @@ export default class UserProfile extends Component{
                                         paddingRight:'2em',paddingBottom:'2em'}}
 
                                 >
-                                    <Button color='blue' fluid style={{marginTop:'1em'}}>Kan Değeri Ata</Button>
+                                    <Button color='blue' fluid style={{marginTop:'1em'}}
+                                            onClick={() => this.setState({kanDegeriEkleModalVisibility:true})}
+                                    >Kan Değeri Ata</Button>
+
+                                    {this.state.kanDegeriEkleModalVisibility ? <KanDegeriEkleModal data={this.state.userData}
+                                                                                          call={this.handleModalClose}
+                                        />
+
+                                        : null}
+
                                     <Button color='orange' fluid style={{marginTop:'1em'}}>Biyolojik Değer Ata</Button>
+
+
                                     <Button color='red' fluid style={{marginTop:'1em'}}>Kullanıcıyı Sil</Button>
 
 

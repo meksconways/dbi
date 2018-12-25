@@ -11,10 +11,17 @@ import {
     manager_faqs_get_url,
     manager_faqs_patch_url,
     manager_faqs_post_url,
-    manager_profile_get_url, manager_profile_logout_url,
+    manager_kandegeri_delete,
+    manager_kandegeri_get,
+    manager_kandegeri_patch,
+    manager_kandegeri_post,
+    manager_profile_get_url,
+    manager_profile_logout_url,
     manager_profile_patch_url,
     manager_sikayet_delete_url,
-    manager_sikayet_get_url, manager_user_profile_delete_url, manager_user_profile_get_url,
+    manager_sikayet_get_url,
+    manager_user_profile_delete_url,
+    manager_user_profile_get_url,
     manager_users_url,
     register_url,
     sign_phone_url
@@ -354,9 +361,6 @@ export const fetchManagerUserProfileDelete = function (id,callback) {
 
 };
 
-
-
-
 export const fetchManagerSikayetDelete = function (id,callback) {
     axios({
         headers:{
@@ -393,4 +397,74 @@ export const fetchManagerSikayetGet = function (callback) {
 
 };
 
+export const fetchManagerKanDegerleriGet = function (callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_kandegeri_get.method,
+        url:manager_kandegeri_get.url
 
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+export const fetchManagerKanDegerleriPost = function (data,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_kandegeri_post.method,
+        url:manager_kandegeri_post.url,
+        data:data
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+export const fetchManagerKanDegerleriPatch = function (id,data,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_kandegeri_patch.method,
+        url:manager_kandegeri_patch.url,
+        data:data
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+export const fetchManagerKanDegerleriDelete = function (id,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_kandegeri_delete.method,
+        url:manager_kandegeri_delete.url,
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};

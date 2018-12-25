@@ -127,6 +127,22 @@ export const manager_user_profile_delete_url = {
     url:Apiendpoint.manager_base_url+Apiendpoint.manager_user_profile_delete.url,
     method:Apiendpoint.manager_user_profile_delete.method
 };
+export const manager_kandegeri_get = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_kandegeri_get.url,
+    method:Apiendpoint.manager_kandegeri_get.method
+};
+export const manager_kandegeri_post = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_kandegeri_post.url,
+    method:Apiendpoint.manager_kandegeri_post.method
+};
+export const manager_kandegeri_patch = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_kandegeri_patch.url,
+    method:Apiendpoint.manager_kandegeri_patch.method
+};
+export const manager_kandegeri_delete = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_kandegeri_delete.url,
+    method:Apiendpoint.manager_kandegeri_delete.method
+};
 
 
 

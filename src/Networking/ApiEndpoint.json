@@ -33,6 +33,25 @@
     "url":"users",
     "method": "delete"
   },
+  "manager_kandegeri_get": {
+    "url": "kan_seker_degerler",
+    "method": "get"
+  },
+
+  "manager_kandegeri_patch": {
+    "url": "kan_seker_degerler",
+    "method": "patch"
+  },
+
+  "manager_kandegeri_delete": {
+    "url": "kan_seker_degerler",
+    "method": "patch"
+  },
+
+  "manager_kandegeri_post":{
+    "url": "kan_seker_degerler",
+    "method": "post"
+  },
 
 
 
