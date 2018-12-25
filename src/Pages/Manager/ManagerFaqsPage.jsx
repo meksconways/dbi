@@ -3,7 +3,6 @@ import HeaderNameItem from "../../Components/HeaderNameItem";
 import {Button} from "semantic-ui-react";
 import FaqsItem from "../../Components/FaqsItem";
 import {fetchManagerFaqsGet} from "../../Networking/ApiFetchService";
-import DuyuruEkleModal from "../../Components/DuyuruEkleModal";
 import FaqsEkleModal from "../../Components/FaqsEkleModal";
 
 

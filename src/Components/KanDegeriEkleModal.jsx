@@ -112,9 +112,8 @@ export default class KanDegeriEkleModal extends Component {
 
                 } else if (res.status >=200 && res.status < 300) {
                     this.setState({btnLoading:false});
-                    // todo burayı unutma kan degerlerine yönelincek
-                    //window.location.href="/kan-degerleri";
-                    window.location.href="/";
+                    window.location.href="/kan-degerleri";
+
                 }
 
             }

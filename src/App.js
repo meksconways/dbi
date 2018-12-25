@@ -17,6 +17,8 @@ import ManagerSikayetPage from "./Pages/Manager/ManagerSikayetPage";
 import ManagerProfile from "./Pages/Manager/ManagerProfile";
 import UserProfile from "./Pages/Manager/UserProfile";
 import ManagerGeriBildirimPage from "./Pages/Manager/ManagerGeriBildirimPage";
+import ManagerBiyolojikDegerlerPage from "./Pages/Manager/ManagerBiyolojikDegerlerPage";
+import ManagerKanDegerleriPage from "./Pages/Manager/ManagerKanDegerleriPage";
 
 
 class App extends Component {
@@ -78,6 +80,8 @@ class App extends Component {
                                           <div>
                                               <Route exact path={"/"} component={UsersPage}/>
                                               <Route path={"/duyurular"} component={DuyurularPage}/>
+                                              <Route path={"/biyolojik-degerler"} component={ManagerBiyolojikDegerlerPage}/>
+                                              <Route path={"/kan-degerleri"} component={ManagerKanDegerleriPage}/>
                                               <Route path={"/sss"} component={ManagerFaqsPage}/>
                                               <Route path={"/sikayetler"} component={ManagerSikayetPage}/>
                                               <Route path={"/manager-profile"} component={ManagerProfile}/>

@@ -54,9 +54,8 @@ export default class BiyolojikDegerEkleModal extends Component{
 
                 } else if (res.status >=200 && res.status < 300) {
                     this.setState({btnLoading:false});
-                    // todo burayı unutma biyolojik değerlere yönelicek
-                    //window.location.href="/biyolojik-degerler";
-                    window.location.href="/";
+                    window.location.href="/biyolojik-degerler";
+
                 }
 
             }

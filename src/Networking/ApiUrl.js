@@ -150,6 +150,12 @@ export const manager_biyolojik_degerler_post = {
     method:Apiendpoint.manager_biyolojikdegerler_post.method
 
 };
+export const manager_biyolojik_degerler_get = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_biyolojikdegerler_get.url,
+    method:Apiendpoint.manager_biyolojikdegerler_get.method
+
+};
 
 export const manager_feedbacks_get_url = {
 

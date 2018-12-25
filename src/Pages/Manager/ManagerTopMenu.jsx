@@ -9,7 +9,7 @@ export default class ManagerTopMenu extends Component {
 
         return (
             <div >
-                <Menu inverted stackable attached>
+                <Menu inverted stackable >
 
                     <Menu.Item>
 
@@ -33,6 +33,18 @@ export default class ManagerTopMenu extends Component {
                         </NavLink>
                     </Menu.Item>
 
+                    <Menu.Item name='Biyolojik Değerler' >
+                        <NavLink to={"/biyolojik-degerler"}>
+                            Biyolojik Değerler
+                        </NavLink>
+                    </Menu.Item>
+
+                    <Menu.Item name='Kan Değerleri' >
+                        <NavLink to={"/kan-degerleri"}>
+                            Kan Değerleri
+                        </NavLink>
+                    </Menu.Item>
+
                     <Menu.Item
                         name='SSS'
                         >
@@ -44,7 +56,7 @@ export default class ManagerTopMenu extends Component {
                         name='Şikayetler'
                        >
 
-                        <NavLink to={"/sikayetler"}>Sikayetler</NavLink>
+                        <NavLink to={"/sikayetler"}>Şikayetler</NavLink>
                     </Menu.Item>
 
                     <Menu.Item

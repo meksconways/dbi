@@ -2,7 +2,7 @@
 import axios from 'axios'
 import {
     check_token_url,
-    login_url, manager_biyolojik_degerler_post,
+    login_url, manager_biyolojik_degerler_get, manager_biyolojik_degerler_post,
     manager_duyuru_delete_url,
     manager_duyuru_ekle_url,
     manager_duyuru_get_url,
@@ -425,6 +425,27 @@ export const fetchManagerBiyoloijkDegerlerPost = function (data,callback) {
         method:manager_biyolojik_degerler_post.method,
         url:manager_biyolojik_degerler_post.url,
         data:data
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerBiyoloijkDegerlerGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_biyolojik_degerler_get.method,
+        url:manager_biyolojik_degerler_get.url,
+
 
 
     }).then(res=>{
