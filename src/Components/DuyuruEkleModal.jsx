@@ -52,7 +52,7 @@ export default class DuyuruEkleModal extends Component{
 
             }
 
-        })
+        });
 
 
 

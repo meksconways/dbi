@@ -144,6 +144,13 @@ export const manager_kandegeri_delete = {
     method:Apiendpoint.manager_kandegeri_delete.method
 };
 
+export const manager_biyolojik_degerler_post = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_biyolojikdegerler_post.url,
+    method:Apiendpoint.manager_biyolojikdegerler_post.method
+
+};
+
 
 
 

@@ -52,6 +52,10 @@
     "url": "kan_seker_degerler",
     "method": "post"
   },
+  "manager_biyolojikdegerler_post": {
+    "url": "biyolojik_degerler",
+    "method": "post"
+  },
 
 
 

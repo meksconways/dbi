@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Button, Form, Icon, Modal} from "semantic-ui-react";
 import Timekeeper from 'react-timekeeper';
 import PickyDateTime from 'react-picky-date-time';
+import {fetchManagerKanDegerleriPost} from "../Networking/ApiFetchService";
 
 export default class KanDegeriEkleModal extends Component {
 
@@ -47,6 +48,7 @@ export default class KanDegeriEkleModal extends Component {
 
     componentWillUnmount() {
 
+        // memory leak ten kaçındık :)
         this.setState(null);
 
     }
@@ -83,6 +85,42 @@ export default class KanDegeriEkleModal extends Component {
     kanDegeriEkle = () =>{
 
 
+        this.setState({btnLoading:true});
+
+        fetchManagerKanDegerleriPost({
+
+            userid:this.state.user_id,
+            aclik_kan_seker_deger: this.state.data.aclik_kan_seker_deger,
+            tokluk_kan_seker_deger: this.state.data.tokluk_kan_seker_deger,
+            nabiz: this.state.data.nabiz,
+            tansiyon: this.state.data.tansiyon,
+            tarih:this.state.data.tarih
+
+
+        },res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+                this.setState({btnLoading:false});
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    this.setState({btnLoading:false});
+
+                } else if (res.status >=200 && res.status < 300) {
+                    this.setState({btnLoading:false});
+                    // todo burayı unutma kan degerlerine yönelincek
+                    //window.location.href="/kan-degerleri";
+                    window.location.href="/";
+                }
+
+            }
+
+
+        });
 
 
     };
@@ -279,7 +317,7 @@ export default class KanDegeriEkleModal extends Component {
                     <Button  colored={true} compact color={'teal'}
                              disabled={this.state.btnDisabled}
                              loading={this.state.btnLoading}
-                             onClick={this.duyuruEkle}>
+                             onClick={this.kanDegeriEkle}>
                         <Icon name='add' /> Oluştur
                     </Button>
 

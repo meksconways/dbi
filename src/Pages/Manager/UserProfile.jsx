@@ -4,6 +4,7 @@ import {fetchManagerUserProfileGet} from "../../Networking/ApiFetchService";
 import {Button, Grid, Header, Icon, Segment} from "semantic-ui-react";
 import DuyuruDetayModal from "../../Components/DuyuruDetayModal";
 import KanDegeriEkleModal from "../../Components/KanDegeriEkleModal";
+import BiyolojikDegerEkleModal from "../../Components/BiyolojikDegerEkleModal";
 
 
 export default class UserProfile extends Component{
@@ -14,13 +15,21 @@ export default class UserProfile extends Component{
         this.state = {
             userData:{},
             userId:this.props.match.params.user_id,
-            kanDegeriEkleModalVisibility:false
+            kanDegeriEkleModalVisibility:false,
+            biyolojikDegerEkleModalVisibility:false,
         }
 
     }
+
+    handleBiyolojikModalClose = () =>{
+
+        this.setState({biyolojikDegerEkleModalVisibility:false});
+
+    };
+
     handleModalClose = () =>{
 
-        this.setState({kanDegeriEkleModalVisibility:false})
+        this.setState({kanDegeriEkleModalVisibility:false});
 
     };
 
@@ -119,20 +128,30 @@ export default class UserProfile extends Component{
                                         paddingRight:'2em',paddingBottom:'2em'}}
 
                                 >
-                                    <Button color='blue' fluid style={{marginTop:'1em'}}
+                                    <Button color='red' fluid style={{marginTop:'1em'}}
                                             onClick={() => this.setState({kanDegeriEkleModalVisibility:true})}
                                     >Kan Değeri Ata</Button>
 
-                                    {this.state.kanDegeriEkleModalVisibility ? <KanDegeriEkleModal data={this.state.userData}
-                                                                                          call={this.handleModalClose}
+                                    {this.state.kanDegeriEkleModalVisibility ? <KanDegeriEkleModal
+                                            data={this.state.userData}
+                                            call={this.handleModalClose}
                                         />
 
                                         : null}
 
-                                    <Button color='orange' fluid style={{marginTop:'1em'}}>Biyolojik Değer Ata</Button>
+                                    <Button color='green' fluid style={{marginTop:'1em'}}
+                                            onClick={() => this.setState({biyolojikDegerEkleModalVisibility:true})}
+                                    >Biyolojik Değer Ata</Button>
+
+                                    {this.state.biyolojikDegerEkleModalVisibility ? <BiyolojikDegerEkleModal
+                                            data={this.state.userData}
+                                            callB={this.handleBiyolojikModalClose}
+                                        />
+
+                                        : null}
 
 
-                                    <Button color='red' fluid style={{marginTop:'1em'}}>Kullanıcıyı Sil</Button>
+                                    <Button color='instagram' fluid style={{marginTop:'1em'}}>Kullanıcıyı Sil</Button>
 
 
 
