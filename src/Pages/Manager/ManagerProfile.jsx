@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import HeaderNameItem from "../../Components/HeaderNameItem";
 import {Button, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
-import {fetchManagerProfileGet, fetchManagerProfilePatch} from "../../Networking/ApiFetchService";
+import {fetchManagerLogout, fetchManagerProfileGet, fetchManagerProfilePatch} from "../../Networking/ApiFetchService";
 
 
 export default class ManagerProfile extends Component{
@@ -15,7 +15,7 @@ export default class ManagerProfile extends Component{
             logoutButtonLoading:false,
             pageLoading:true,
             nameSurnameInput:'',
-            updateButtonDisabled:false
+            updateButtonDisabled:false,
 
         }
 
@@ -92,6 +92,40 @@ export default class ManagerProfile extends Component{
     };
 
 
+    logout = () =>{
+
+        this.setState({logoutButtonLoading:true});
+
+        fetchManagerLogout(res=>{
+
+
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    localStorage.clear();
+
+                    window.location.href="/";
+
+
+                }
+
+            }
+
+        });
+
+
+
+    };
 
     handleInputChange = (e,v) =>{
 
@@ -163,6 +197,7 @@ export default class ManagerProfile extends Component{
 
                                         <Button color='red' colored fluid
                                                 loading={this.state.logoutButtonLoading}
+                                                onClick={this.logout}
                                                 style={{marginTop:'1em'}}>
                                             <Icon name='log out' />
                                             Çıkış Yap

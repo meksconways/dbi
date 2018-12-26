@@ -1,17 +1,25 @@
 import React, {Component} from 'react'
-import {Button, Form, Icon, Modal} from "semantic-ui-react";
+import {Button, Form, Header, Icon, Modal} from "semantic-ui-react";
 import Timekeeper from 'react-timekeeper';
 import PickyDateTime from 'react-picky-date-time';
-import {fetchManagerBiyoloijkDegerlerPost} from "../Networking/ApiFetchService";
+import {
+    fetchManagerBiyoloijkDegerlerDelete,
+    fetchManagerBiyoloijkDegerlerPatch,
+    fetchManagerUserProfileGet
+} from "../Networking/ApiFetchService";
 
-export default class BiyolojikDegerEkleModal extends Component{
+export default class BiyolojikDegerlerDetayModal extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            user_id:this.props.data.userid,
-            btnLoading:false,
-            btnDisabled:true,
+            showPickyDateTime: true,
+            date: '',
+            month: '',
+            year: '',
+            dateFormat24:'',
+            name:'Yükleniyor...',
+            delBtnLoading:false,
             data:{
                 hba1c:'',
                 ldl:'',
@@ -20,20 +28,18 @@ export default class BiyolojikDegerEkleModal extends Component{
                 tarih:''
 
             },
-            showPickyDateTime: true,
-            date: '',
-            month: '',
-            year: '',
-            dateFormat24:''
+            btnLoading:false,
+            btnDisabled:false,
         }
+
     }
 
-    biyolojikDegerEkle = () => {
+    guncelle = () => {
 
         this.setState({btnLoading:true});
+        fetchManagerBiyoloijkDegerlerPatch(this.props.data.id,{
 
-        fetchManagerBiyoloijkDegerlerPost({
-            userid:this.state.user_id,
+            userid:this.props.data.userid,
             hba1c:this.state.data.hba1c,
             ldl:this.state.data.ldl,
             hdl:this.state.data.hdl,
@@ -41,7 +47,7 @@ export default class BiyolojikDegerEkleModal extends Component{
             tarih:this.state.year+'-'+this.state.month+'-'+this.state.date+
                 ' '+this.state.dateFormat24
 
-        },res => {
+        },res=>{
             if ((typeof res).toString() === "undefined") {
 
                 // route login
@@ -60,32 +66,109 @@ export default class BiyolojikDegerEkleModal extends Component{
                 }
 
             }
-
-
         });
 
 
     };
 
+    sil = () => {
+
+        this.setState({delBtnLoading:true});
+        fetchManagerBiyoloijkDegerlerDelete(this.props.data.id,res=>{
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+                this.setState({btnLoading:false});
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+
+
+                } else if (res.status >=200 && res.status < 300) {
+
+
+                    window.location.href="/biyolojik-degerler";
+
+                }
+
+            }
+
+
+        });
+
+    };
+
+
+    getUser = () => {
+
+        fetchManagerUserProfileGet(this.props.data.userid,res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+                this.setState({btnLoading:false});
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    this.setState({name:res.data.data.name_surname})
+
+                }
+
+            }
+
+
+        });
+
+    };
+
+
+    componentWillMount() {
+
+        this.setState({data:this.props.data});
+
+
+        this.getUser();
+        const tarih = this.props.data.tarih;
+
+        this.setState({year: tarih.substr(0,4)});
+        this.setState({month:tarih.substr(5,2)});
+        this.setState({date:tarih.substr(8,2)});
+        this.setState({dateFormat24:tarih.substr(11,5)});
+
+    }
 
     render() {
         return (
-            <Modal defaultOpen onClose={this.props.callB}>
+            <Modal defaultOpen onClose={this.props.callBDuzenle}>
 
-                <Modal.Header>Biyolojik Değer Ekle</Modal.Header>
+                <Modal.Header>Biyolojik Değer Detay</Modal.Header>
                 <Modal.Content  scrolling>
 
 
                     <Modal.Description>
+
+                        <Header as={'h3'}>{this.state.name}</Header>
+
                         <Form>
                             <Form.Group>
                                 <Form.Input label='HBA1C'
                                             placeholder='Hba1c'
+                                            defaultValue={this.props.data.hba1c}
                                             onChange={this.handleHBA1CValue}
                                             width={4} />
 
                                 <Form.Input label='LDL'
                                             placeholder='Ldl'
+                                            defaultValue={this.props.data.ldl}
                                             onChange={this.handleLDLValue}
                                             width={4} />
 
@@ -93,11 +176,13 @@ export default class BiyolojikDegerEkleModal extends Component{
                             <Form.Group>
                                 <Form.Input label='HDL'
                                             placeholder='Hdl'
+                                            defaultValue={this.props.data.hdl}
                                             onChange={this.handleHDLValue}
                                             width={4} />
 
                                 <Form.Input label='Trigliserid'
                                             placeholder='Trigliserid'
+                                            defaultValue={this.props.data.trigliserid}
                                             onChange={this.handleTrigliseridValue}
                                             width={4} />
 
@@ -160,19 +245,25 @@ export default class BiyolojikDegerEkleModal extends Component{
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
+                    <Button  colored={true} compact color={'red'}
+                             loading={this.state.silBtnLoading}
+                             onClick={this.sil}>
+                        <Icon name='trash alternate' /> Sil
+                    </Button>
+
                     <Button  colored={true} compact color={'teal'}
                              disabled={this.state.btnDisabled}
                              loading={this.state.btnLoading}
-                             onClick={this.biyolojikDegerEkle}>
-                        <Icon name='add' /> Oluştur
+                             onClick={this.guncelle}>
+                        <Icon name='add' /> Güncelle
                     </Button>
-
                 </Modal.Actions>
 
 
             </Modal>
         );
     }
+
 
     handleHBA1CValue = (e) =>{
 
@@ -279,33 +370,6 @@ export default class BiyolojikDegerEkleModal extends Component{
         this.setState(null);
 
     }
-    componentWillMount() {
-        const date = new Date();
-
-        this.setState({year:date.getFullYear()});
-        this.setState({month:("0" + (date.getMonth() + 1)).slice(-2)});
-        this.setState({date:("0" + date.getDate()).slice(-2)});
-
-
-
-        let hour = date.getHours();
-
-        if (hour.toString().length < 2){
-            hour = '0'+hour
-        }
-
-        let minute = date.getMinutes();
-
-        if (minute.toString().length < 2){
-            minute = '0'+minute
-        }
-
-        this.setState({dateFormat24:hour+':'+minute});
-
-
-
-    }
-
 
     onFormattedDateChanged = (res) =>{
 
@@ -325,12 +389,12 @@ export default class BiyolojikDegerEkleModal extends Component{
 
     onDatePicked(res) {
         const { date, month, year } = res;
-        this.setState({ year: year, month: month});
+        this.setState({ year: year, month: month,date:date });
     }
 
     onResetDate(res) {
         const { date, month, year } = res;
-        this.setState({ year: year, month: month });
+        this.setState({ year: year, month: month,date:date });
     }
 
 }

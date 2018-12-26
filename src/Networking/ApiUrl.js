@@ -150,6 +150,29 @@ export const manager_biyolojik_degerler_post = {
     method:Apiendpoint.manager_biyolojikdegerler_post.method
 
 };
+
+export const manager_biyolojik_degerler_patch = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_biyolojikdegerler_patch.url,
+    method:Apiendpoint.manager_biyolojikdegerler_patch.method
+
+};
+
+export const manager_biyolojik_degerler_delete = {
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_biyolojikdegerler_delete.url,
+    method:Apiendpoint.manager_biyolojikdegerler_delete.method
+
+};
+
+export const manager_logout_url ={
+
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_logout.url,
+    method:Apiendpoint.manager_logout.method
+
+};
+
+
 export const manager_biyolojik_degerler_get = {
 
     url:Apiendpoint.manager_base_url+Apiendpoint.manager_biyolojikdegerler_get.url,

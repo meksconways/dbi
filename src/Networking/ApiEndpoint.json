@@ -53,7 +53,11 @@
     "method": "post"
   },
 
+  "manager_logout": {
+    "url": "logout",
+    "method": "delete"
 
+  },
 
   "manager_biyolojikdegerler_post": {
     "url": "biyolojik_degerler",
@@ -65,7 +69,15 @@
     "method": "get"
   },
 
+  "manager_biyolojikdegerler_patch": {
+    "url": "biyolojik_degerler",
+    "method": "patch"
+  },
 
+  "manager_biyolojikdegerler_delete": {
+    "url": "biyolojik_degerler",
+    "method": "delete"
+  },
 
   "manager_feedbacks_get": {
     "url": "feedbacks",

@@ -2,7 +2,11 @@
 import axios from 'axios'
 import {
     check_token_url,
-    login_url, manager_biyolojik_degerler_get, manager_biyolojik_degerler_post,
+    login_url,
+    manager_biyolojik_degerler_delete,
+    manager_biyolojik_degerler_get,
+    manager_biyolojik_degerler_patch,
+    manager_biyolojik_degerler_post,
     manager_duyuru_delete_url,
     manager_duyuru_ekle_url,
     manager_duyuru_get_url,
@@ -10,11 +14,14 @@ import {
     manager_faqs_delete_url,
     manager_faqs_get_url,
     manager_faqs_patch_url,
-    manager_faqs_post_url, manager_feedbacks_delete_url, manager_feedbacks_get_url,
+    manager_faqs_post_url,
+    manager_feedbacks_delete_url,
+    manager_feedbacks_get_url,
     manager_kandegeri_delete,
     manager_kandegeri_get,
     manager_kandegeri_patch,
     manager_kandegeri_post,
+    manager_logout_url,
     manager_profile_get_url,
     manager_profile_logout_url,
     manager_profile_patch_url,
@@ -27,7 +34,26 @@ import {
     sign_phone_url
 } from "./ApiUrl";
 
+// deneme
+export const fetchGirisYap = function (data,onSuccess,onError) {
 
+    axios({
+        method: login_url.method,
+        url:login_url.url,
+        data:data
+
+
+    })
+        .then(
+            (res) => {
+                onSuccess(res);
+            }
+
+        ).catch(error => {
+        onError(error)
+    })
+
+};
 
 
 export const fetchLogin = function (data,callback) {
@@ -48,6 +74,42 @@ export const fetchLogin = function (data,callback) {
     })
 
 };
+
+
+export const fetchManagerLogout = function (callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: manager_logout_url.method,
+        url:manager_logout_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+
+
+};
+
+// deneme
+export const fetchKayitOl = function (data,onSuccess,onError) {
+    axios({
+        method: register_url.method,
+        url:register_url.url,
+        data:data
+    })
+        .then(res=>{
+            onSuccess(res)
+        })
+        .catch(error => {
+            onError(error)
+        })
+};
+
 
 export const fetchRegister = function (data,callback) {
 
@@ -103,10 +165,33 @@ export const fetchCheckToken = function (callback) {
 
 };
 
+
+// deneme
+export const fetchTelefonlaGiris = function (data,callbackSuccess,callBackErr) {
+
+    axios({
+        headers:{
+            'Content-Type':'application/json'
+        },
+        method:sign_phone_url.method,
+        url:sign_phone_url.url,
+        data:data
+    }).then(response => {
+        callbackSuccess(response)
+    }).catch(err => {
+        callBackErr(err)
+    })
+
+};
+
+
 export const fetchPhoneSign = function (data,callback) {
 
 
     axios({
+        headers:{
+          'Content-Type':'application/json'
+        },
         method:sign_phone_url.method,
         url:sign_phone_url.url,
         data:data
@@ -447,6 +532,47 @@ export const fetchManagerBiyoloijkDegerlerGet = function (callback) {
         url:manager_biyolojik_degerler_get.url,
 
 
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerBiyoloijkDegerlerPatch = function (id,data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_biyolojik_degerler_patch.method,
+        url:manager_biyolojik_degerler_patch.url+'/'+id,
+        data:data
+
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerBiyoloijkDegerlerDelete = function (id,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_biyolojik_degerler_delete.method,
+        url:manager_biyolojik_degerler_delete.url+'/'+id,
 
     }).then(res=>{
         callback(res)

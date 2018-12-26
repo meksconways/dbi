@@ -9,7 +9,7 @@ export default class ManagerTopMenu extends Component {
 
         return (
             <div >
-                <Menu inverted stackable >
+                <Menu inverted stackable attached>
 
                     <Menu.Item>
 

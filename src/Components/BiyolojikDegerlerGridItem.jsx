@@ -1,12 +1,24 @@
 import React, {Component} from 'react'
 import {Button, Card, Grid, Header, Icon} from 'semantic-ui-react'
+import DuyuruDetayModal from "./DuyuruDetayModal";
+import BiyolojikDegerlerDetayModal from "./BiyolojikDegerlerDetayModal";
 
 export default class BiyolojikDegerlerGridItem extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            modalVisibility : false
+        }
 
     }
+
+
+    handleModalClose = () =>{
+
+        this.setState({modalVisibility:false});
+
+    };
 
     render() {
         return (
@@ -34,9 +46,14 @@ export default class BiyolojikDegerlerGridItem extends Component {
                     </Card.Content>
                     <Card.Content>
                         <Button compact color='green' content='Detay'
-                                fluid onClick={() => this.setState({duyuruDetayVisibility:true})}
+                                fluid onClick={() => this.setState({modalVisibility:true})}
                         />
                     </Card.Content>
+                    {this.state.modalVisibility ? <BiyolojikDegerlerDetayModal data={this.props.data}
+                                                                    callBDuzenle={this.handleModalClose}
+                        />
+
+                        : null}
 
                 </Card>
             </Grid.Column>

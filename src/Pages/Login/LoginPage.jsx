@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Button, Card, Divider, Form, Grid, Header, Icon, Input, Segment} from 'semantic-ui-react'
 
 import {NavLink, Redirect, Route} from "react-router-dom";
-import {fetchLogin} from "../../Networking/ApiFetchService";
+import {fetchGirisYap, fetchLogin} from "../../Networking/ApiFetchService";
 import ErrorMessage from "../../Components/ErrorMessage";
 import VerificationCode from "./VerificationCode";
 
@@ -70,6 +70,32 @@ export default class LoginPage extends Component{
           this.setState({buttonDisabled:true})
       }
     };
+
+
+    girisYap = () => {
+        this.setState({loading:true});
+
+        fetchGirisYap(this.state.data,res=> {
+
+            this.setState({errorMessage:[]});
+            this.setState({loading:false});
+            this.props.history.push('/verification/'+res.data.data.userid);
+
+        },err=> {
+
+            if (err.status === 500){
+                this.setState({errorMessage:["Sunucu ile bağlantı hatası yaşandı"]})
+                this.setState({loading:false});
+            } else{
+                this.setState({errorMessage:err.response.data.errors})
+                this.setState({loading:false});
+            }
+
+        });
+
+
+    };
+
 
     login=()=>{
 
@@ -169,7 +195,7 @@ export default class LoginPage extends Component{
                                                 fluid
                                                 style={{borderRadius:'7px'}}
                                                 disabled={this.state.buttonDisabled}
-                                                onClick={this.login}
+                                                onClick={this.girisYap}
                                         >
                                             Giriş Yap
                                         </Button>

@@ -87,6 +87,8 @@ export default class KanDegeriEkleModal extends Component {
 
         this.setState({btnLoading:true});
 
+
+
         fetchManagerKanDegerleriPost({
 
             userid:this.state.user_id,
@@ -94,7 +96,8 @@ export default class KanDegeriEkleModal extends Component {
             tokluk_kan_seker_deger: this.state.data.tokluk_kan_seker_deger,
             nabiz: this.state.data.nabiz,
             tansiyon: this.state.data.tansiyon,
-            tarih:this.state.data.tarih
+            tarih:this.state.year+'-'+this.state.month+'-'+this.state.date+
+                ' '+this.state.dateFormat24
 
 
         },res => {
@@ -345,12 +348,12 @@ export default class KanDegeriEkleModal extends Component {
 
     onDatePicked(res) {
         const { date, month, year } = res;
-        this.setState({ year: year, month: month, date: date });
+        this.setState({ year: year, month: month });
     }
 
     onResetDate(res) {
         const { date, month, year } = res;
-        this.setState({ year: year, month: month, date: date });
+        this.setState({ year: year, month: month});
     }
 
     onTimeChange(res){

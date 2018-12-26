@@ -3,7 +3,7 @@ import {Button, Card, Container, Divider, Form, Grid, Icon, Input, Segment} from
 
 import {NavLink} from "react-router-dom";
 import ErrorMessage from "../../Components/ErrorMessage";
-import {fetchRegister} from "../../Networking/ApiFetchService";
+import {fetchKayitOl, fetchRegister} from "../../Networking/ApiFetchService";
 
 
 export default class RegisterPage extends Component{
@@ -18,7 +18,8 @@ export default class RegisterPage extends Component{
                 email:"",
                 password:"",
                 password_confirmation:"",
-                name_surname:""
+                name_surname:"",
+                phone:''
             }
         }
 
@@ -31,7 +32,8 @@ export default class RegisterPage extends Component{
                 email: e.target.value,
                 password:this.state.data.password,
                 password_confirmation: this.state.data.password_confirmation,
-                name_surname: this.state.data.name_surname
+                name_surname: this.state.data.name_surname,
+                phone:this.state.data.phone
             }
         });
 
@@ -45,7 +47,8 @@ export default class RegisterPage extends Component{
                 email: this.state.data.email,
                 password:this.state.data.password,
                 password_confirmation: this.state.data.password_confirmation,
-                name_surname: e.target.value
+                name_surname: e.target.value,
+                phone:this.state.data.phone
             }
         });
 
@@ -58,7 +61,8 @@ export default class RegisterPage extends Component{
                 email: this.state.data.email,
                 password:e.target.value,
                 password_confirmation: this.state.data.password_confirmation,
-                name_surname: this.state.data.name_surname
+                name_surname: this.state.data.name_surname,
+                phone:this.state.data.phone
             }
         });
 
@@ -72,10 +76,25 @@ export default class RegisterPage extends Component{
                 email: this.state.data.email,
                 password:this.state.data.password,
                 password_confirmation: e.target.value,
-                name_surname: this.state.data.name_surname
+                name_surname: this.state.data.name_surname,
+                phone:this.state.data.phone
             }
         });
 
+
+    };
+
+    handlePhoneChange = (e) =>{
+
+        this.setState({
+            data:{
+                email: this.state.data.email,
+                password:this.state.data.password,
+                password_confirmation: this.state.data.password_confirmation,
+                name_surname: this.state.data.name_surname,
+                phone:e.target.value
+            }
+        });
 
     };
 
@@ -106,13 +125,14 @@ export default class RegisterPage extends Component{
 
                 if (res.status >= 400 && res.status < 500){
 
+                    console.log(res.data);
+
                     this.setState({errorMessage:res.data.errors})
 
                 } else if (res.status >=200 && res.status < 300) {
 
                     const rootJsonObj = JSON.parse(res.data);
 
-                    console.log(rootJsonObj);
                     return;
 
                     const isAdmin = rootJsonObj.data.is_admin;
@@ -133,6 +153,36 @@ export default class RegisterPage extends Component{
 
 
         })
+
+    };
+
+    kaydol = () => {
+        this.setState({errorMessage:[]});
+        this.setState({loading:true});
+
+        fetchKayitOl(this.state.data,
+            res=>{
+
+           // localStorage.setItem('token',res.data.data.token);
+            //localStorage.setItem('is_admin','0');
+            this.props.history.push('/verification/'+res.data.data.userid);
+            console.log('başarılı')
+
+
+        },err => {
+
+            if (err.status === 500){
+                this.setState({loading:false});
+                this.setState({errorMessage:["Sunucu ile bağlantı hatası yaşandı"]});
+            } else{
+                this.setState({loading:false});
+                this.setState({errorMessage:err.response.data.errors});
+            }
+
+
+        })
+
+
 
     };
 
@@ -208,6 +258,17 @@ export default class RegisterPage extends Component{
                                                     <input />
                                                 </Input>
                                             </Form.Field>
+                                            <Form.Field>
+                                                <label>Telefon Numarası</label>
+                                                <Input iconPosition='left'
+                                                       placeholder='+905555555555'
+                                                       id={'txt_phone'}
+                                                       onChange={this.handlePhoneChange}
+                                                >
+                                                    <Icon name='phone' />
+                                                    <input />
+                                                </Input>
+                                            </Form.Field>
 
                                             <Divider clearing={true}
                                                      hidden
@@ -218,7 +279,7 @@ export default class RegisterPage extends Component{
                                             {this.state.errorMessage.length > 0 ?
                                                 this.state.errorMessage.map((m,i)=> {
 
-                                                    return <ErrorMessage message = {m} message_key = {i+1}/>
+                                                    return <ErrorMessage message={m}/>
 
                                                 })
 
@@ -228,7 +289,7 @@ export default class RegisterPage extends Component{
                                             <Button inverted color='blue'
                                                     fluid
                                                     circular
-                                                    onClick={this.signUp}
+                                                    onClick={this.kaydol}
                                             >
                                                 Kaydol
                                             </Button>
