@@ -452,7 +452,7 @@ export const fetchManagerSikayetDelete = function (id,callback) {
             'token':localStorage.getItem('token')
         },
         method:manager_sikayet_delete_url.method,
-        url:manager_sikayet_delete_url.url
+        url:manager_sikayet_delete_url.url+'/'+id
 
     }).then(res=>{
         callback(res)
@@ -606,10 +606,11 @@ export const fetchManagerKanDegerleriPost = function (data,callback) {
 export const fetchManagerKanDegerleriPatch = function (id,data,callback) {
     axios({
         headers:{
-            'token':localStorage.getItem('token')
+            'token':localStorage.getItem('token'),
+            'Content-Type':'application/json'
         },
         method:manager_kandegeri_patch.method,
-        url:manager_kandegeri_patch.url,
+        url:manager_kandegeri_patch.url+'/'+id,
         data:data
 
     }).then(res=>{
@@ -627,7 +628,7 @@ export const fetchManagerKanDegerleriDelete = function (id,callback) {
             'token':localStorage.getItem('token')
         },
         method:manager_kandegeri_delete.method,
-        url:manager_kandegeri_delete.url,
+        url:manager_kandegeri_delete.url+'/'+id,
 
 
     }).then(res=>{

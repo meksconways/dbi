@@ -45,7 +45,7 @@
 
   "manager_kandegeri_delete": {
     "url": "kan_seker_degerler",
-    "method": "patch"
+    "method": "delete"
   },
 
   "manager_kandegeri_post":{

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Form, Header, Icon, Modal} from "semantic-ui-react";
+import {Button, Divider, Form, Header, Icon, Modal} from "semantic-ui-react";
 import Timekeeper from 'react-timekeeper';
 import PickyDateTime from 'react-picky-date-time';
 import {
@@ -150,13 +150,14 @@ export default class BiyolojikDegerlerDetayModal extends Component {
         return (
             <Modal defaultOpen onClose={this.props.callBDuzenle}>
 
-                <Modal.Header>Biyolojik Değer Detay</Modal.Header>
+                <Modal.Header style={{backgroundColor:'#00c549',color:'white'}}>Biyolojik Değer Detay</Modal.Header>
                 <Modal.Content  scrolling>
 
 
                     <Modal.Description>
 
-                        <Header as={'h3'}>{this.state.name}</Header>
+                        <Header as={'h2'}>{this.state.name}</Header>
+                        <Divider/>
 
                         <Form>
                             <Form.Group>
@@ -246,12 +247,12 @@ export default class BiyolojikDegerlerDetayModal extends Component {
                 </Modal.Content>
                 <Modal.Actions>
                     <Button  colored={true} compact color={'red'}
-                             loading={this.state.silBtnLoading}
+                             loading={this.state.delBtnLoading}
                              onClick={this.sil}>
                         <Icon name='trash alternate' /> Sil
                     </Button>
 
-                    <Button  colored={true} compact color={'teal'}
+                    <Button  colored={true} compact color={'green'}
                              disabled={this.state.btnDisabled}
                              loading={this.state.btnLoading}
                              onClick={this.guncelle}>
@@ -263,7 +264,6 @@ export default class BiyolojikDegerlerDetayModal extends Component {
             </Modal>
         );
     }
-
 
     handleHBA1CValue = (e) =>{
 
@@ -277,9 +277,6 @@ export default class BiyolojikDegerlerDetayModal extends Component {
                     this.state.date+' '+
                     this.state.dateFormat24
             }});
-
-
-
 
     };
 

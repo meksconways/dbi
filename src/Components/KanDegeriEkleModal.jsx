@@ -227,7 +227,9 @@ export default class KanDegeriEkleModal extends Component {
         return (
             <Modal defaultOpen onClose={this.props.call}>
 
-                <Modal.Header>Kan Değeri Ekle</Modal.Header>
+                <Modal.Header style={{backgroundColor:'#f00000',color:'white'}}>
+                    <Icon name={"heartbeat"}/>
+                    Kan Değeri Ekle</Modal.Header>
                 <Modal.Content  scrolling>
 
 
