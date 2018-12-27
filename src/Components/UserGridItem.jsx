@@ -21,13 +21,17 @@ export default class UserGridItem extends Component{
                 <Card fluid >
 
                     <Card.Content>
+                        <Card.Header><Icon name={"user"} color={'blue'} size={"huge"}/></Card.Header>
+
+                    </Card.Content>
+
+                    <Card.Content>
                         <Card.Header>{this.props.data.name_surname}</Card.Header>
                         <Card.Meta style={{color:'#212121'}}>{this.props.data.email}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
                         <NavLink to={"/user/"+this.props.data.userid}>
-                            <Icon name='user' />
-                            Profili Gör
+                            <Button colored={true} color={'blue'} fluid compact>Profili Gör</Button>
                         </NavLink>
 
                     </Card.Content>

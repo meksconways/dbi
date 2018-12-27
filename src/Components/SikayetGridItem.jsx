@@ -59,7 +59,12 @@ export default class SikayetGridItem extends Component{
                 <Card fluid >
 
                     <Card.Content>
-                        <Card.Header  style={{paddingBottom:'1em'}} >Şikayet ID &nbsp; {this.props.data.id}</Card.Header>
+                        <Card.Header><Icon name={"flag"} color={'grey'} size={"huge"}/></Card.Header>
+
+                    </Card.Content>
+
+                    <Card.Content>
+                        <Card.Header  >Şikayet ID &nbsp; {this.props.data.id}</Card.Header>
                         <Card.Meta extra style={{color:'#212121'}}>{this.props.data.complaint}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>

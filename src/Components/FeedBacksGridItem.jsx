@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import {Button, Grid, Card, Icon} from "semantic-ui-react";
+import {fetchManagerFeedbacksDelete} from "../Networking/ApiFetchService";
 
 
 
@@ -14,7 +15,35 @@ export default class FeedBacksGridItem extends Component{
     }
 
 
-    //todo delete eklenecek
+
+    deleteFeedback = () =>{
+
+      this.setState({buttonLoading:true});
+      fetchManagerFeedbacksDelete(this.props.data.id,res=>{
+
+          if ((typeof res).toString() === "undefined") {
+
+              // route login
+              this.setState({deleteLoading:false});
+
+          }else{
+
+              if (res.status >= 400 && res.status < 500){
+
+                  this.setState({deleteLoading:false});
+
+              } else if (res.status >=200 && res.status < 300) {
+
+                  this.setState({deleteLoading:false});
+                  window.location.href="/feedbacks";
+              }
+
+          }
+
+
+      });
+
+    };
 
     render() {
         return (
@@ -27,7 +56,11 @@ export default class FeedBacksGridItem extends Component{
                     <Card fluid >
 
                         <Card.Content>
-                            <Card.Header  style={{paddingBottom:'1em'}} >Geri Bildirim ID &nbsp; {this.props.data.id}</Card.Header>
+                            <Card.Header><Icon name={"modx"} color={'teal'} size={"huge"}/></Card.Header>
+
+                        </Card.Content>
+                        <Card.Content>
+                            <Card.Header as={'h3'}>Geri Bildirim ID &nbsp; {this.props.data.id}</Card.Header>
                             <Card.Meta extra style={{color:'#212121'}}>{this.props.data.feedback}</Card.Meta>
                         </Card.Content>
                         <Card.Content extra>
@@ -35,7 +68,9 @@ export default class FeedBacksGridItem extends Component{
                         </Card.Content>
                         <Card.Content extra>
                             <Button color='red' fluid onClick={this.deleteSikayet}
-                                    loading={this.state.buttonLoading}><Icon name={'trash alternate'}/>Kaldır</Button>
+                                    loading={this.state.buttonLoading}><Icon name={'trash alternate'}
+                            onClick={this.deleteFeedback}
+                            />Kaldır</Button>
 
                         </Card.Content>
                     </Card>
