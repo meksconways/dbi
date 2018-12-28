@@ -130,7 +130,7 @@ export default class RegisterPage extends Component{
                     this.setState({errorMessage:res.data.errors})
 
                 } else if (res.status >=200 && res.status < 300) {
-
+                    this.props.history.push('/verification/'+res.data.data.userid);
                     const rootJsonObj = JSON.parse(res.data);
 
                     return;

@@ -33,7 +33,7 @@ export default class UserHomePage extends Component{
 
                         <Grid
                         >
-                            <Grid.Row textAlign={'center'} >
+                            <Grid.Row verticalAlign={'middle'} textAlign={'center'} >
 
                                 <Grid.Column
                                     computer={2} tablet={8} mobile={16}
@@ -62,14 +62,11 @@ export default class UserHomePage extends Component{
                                             />
                                         </Form.Field>
 
-                                        <Button animated='vertical' disabled={this.state.updateButtonDisabled}
+                                        <Button disabled={this.state.updateButtonDisabled}
                                                 fluid onClick={this.updateProfile} colored color={'green'}
                                                 loading={this.state.updateButtonLoading}
-                                        >
-                                            <Button.Content visible>Güncelle</Button.Content>
-                                            <Button.Content hidden>
-                                                <Icon name='edit' />
-                                            </Button.Content>
+                                        ><Icon name='edit' />
+                                           Güncelle
                                         </Button>
 
 
@@ -79,6 +76,13 @@ export default class UserHomePage extends Component{
                                                 style={{marginTop:'1em'}}>
                                             <Icon name='log out' />
                                             Çıkış Yap
+                                        </Button>
+                                        <Button color='grey' colored fluid
+                                                loading={this.state.logoutButtonLoading}
+                                                onClick={this.logout}
+                                                style={{marginTop:'1em'}}>
+                                            <Icon name='trash alternate' />
+                                            Hesabı Sil
                                         </Button>
                                     </Form>
 
@@ -95,7 +99,7 @@ export default class UserHomePage extends Component{
                                 >
                                     <Header as={'h3'} style={{textAlign:'left'}}>User ID: {this.state.data.userid}</Header>
                                     <Header as={'h3'} style={{textAlign:'left'}}>E-Posta: {this.state.data.email}</Header>
-                                    <Header as={'h3'} style={{textAlign:'left'}}>Kullanıcı Tipi: &nbsp;Admin</Header>
+                                    <Header as={'h3'} style={{textAlign:'left'}}>Kullanıcı Tipi: &nbsp;Normal Üye</Header>
 
 
 

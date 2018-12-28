@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import HeaderNameItem from "../../Components/HeaderNameItem";
 import {fetchManagerUserProfileGet} from "../../Networking/ApiFetchService";
 import {Button, Grid, Header, Icon, Segment} from "semantic-ui-react";
-import DuyuruDetayModal from "../../Components/DuyuruDetayModal";
 import KanDegeriEkleModal from "../../Components/KanDegeriEkleModal";
 import BiyolojikDegerEkleModal from "../../Components/BiyolojikDegerEkleModal";
 
