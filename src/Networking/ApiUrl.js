@@ -194,6 +194,88 @@ export const manager_feedbacks_delete_url = {
 
 };
 
+// user tarafı
+
+
+export const user_duyuru_get_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_duyuru_get.url,
+    method:Apiendpoint.user_duyuru_get.method
+
+};
+
+export const user_sikayet_post_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_sikayetler_post.url,
+    method:Apiendpoint.user_sikayetler_post.method
+
+};
+
+export const user_errorreports_post_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_errorreports_post.url,
+    method:Apiendpoint.user_errorreports_post.method
+
+};
+
+export const user_feedbacks_post_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_feedbacks_post.url,
+    method:Apiendpoint.user_feedbacks_post.method
+
+};
+
+export const user_faqs_get_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_faqs_get.url,
+    method:Apiendpoint.user_faqs_get.method
+
+};
+
+export const user_biyolojik_degerler_get_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_biyolojik_degerler_get.url,
+    method:Apiendpoint.user_biyolojik_degerler_get.method
+
+};
+
+export const user_kandegerleri_get_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_kandegerleri_get.url,
+    method:Apiendpoint.user_kandegerleri_get.method
+
+};
+
+export const user_logout_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_logout.url,
+    method:Apiendpoint.user_logout.method
+
+};
+
+export const user_profile_get_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_profile_get.url,
+    method:Apiendpoint.user_profile_get.method
+
+};
+
+export const user_profile_post_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_profile_post.url,
+    method:Apiendpoint.user_profile_post.method
+
+};
+
+export const user_profile_delete_url = {
+
+    url:Apiendpoint.user_base_url+Apiendpoint.user_profile_delete.url,
+    method:Apiendpoint.user_profile_delete.method
+
+};
+
+
+
 
 
 

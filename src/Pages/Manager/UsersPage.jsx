@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
-import {Grid, Menu, Segment,} from 'semantic-ui-react'
+import {Grid,} from 'semantic-ui-react'
 import {fetchUsers} from "../../Networking/ApiFetchService";
-import {Redirect} from "react-router-dom";
-import ErrorMessage from "../../Components/ErrorMessage";
 import UserGridItem from "../../Components/UserGridItem";
 import HeaderNameItem from "../../Components/HeaderNameItem";
-
 
 
 export default class UsersPage extends Component{

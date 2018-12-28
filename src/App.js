@@ -7,7 +7,6 @@ import UserHomePage from "./Pages/User/UserHomePage";
 import {BrowserRouter, Route} from "react-router-dom";
 import RegisterPage from "./Pages/User/RegisterPage";
 import VerificationCode from "./Pages/Login/VerificationCode";
-import {Menu} from "semantic-ui-react/dist/commonjs/collections/Menu/Menu";
 import UsersPage from "./Pages/Manager/UsersPage";
 import DuyurularPage from "./Pages/Manager/DuyurularPage";
 import ManagerTopMenu from "./Pages/Manager/ManagerTopMenu";
@@ -19,6 +18,11 @@ import UserProfile from "./Pages/Manager/UserProfile";
 import ManagerGeriBildirimPage from "./Pages/Manager/ManagerGeriBildirimPage";
 import ManagerBiyolojikDegerlerPage from "./Pages/Manager/ManagerBiyolojikDegerlerPage";
 import ManagerKanDegerleriPage from "./Pages/Manager/ManagerKanDegerleriPage";
+import UserDuyuruPage from "./Pages/User/UserDuyuruPage";
+import UserBiyolojikDegerlerPage from "./Pages/User/UserBiyolojikDegerlerPage";
+import UserKanDegerleriPage from "./Pages/User/UserKanDegerleriPage";
+import UserTopMenu from "./Pages/User/UserTopMenu";
+import UserFaqsPage from "./Pages/User/UserFaqsPage";
 
 
 class App extends Component {
@@ -35,23 +39,31 @@ class App extends Component {
     tokenCheck = () => {
         fetchCheckToken(res => {
 
+            console.log('check token');
+
             if((typeof res.data)==="undefined"){
+                console.log('11111111');
                 this.setState({isAdmin:false});
                 this.setState({isLogin:"1"});
                 if(window.location.pathname!=="/") window.location.href="/";
 
             }else{
                 if (res.status >= 400 && res.status <= 500){
-
+                    console.log('2222222');
                     this.setState({isAdmin:false});
                     this.setState({isLogin:"1"});
                     if(window.location.pathname!=="/") window.location.href="/";
 
 
-
                 } else if (res.status >=200 && res.status < 300) {
-
-                    this.setState({isAdmin:true});
+                    console.log('333333');
+                    const ia = localStorage.getItem('is_admin');
+                    console.log(ia);
+                    if (ia === '1'){
+                        this.setState({isAdmin:true})
+                    } else{
+                        this.setState({isAdmin:false})
+                    }
                     this.setState({isLogin:"2"});
 
                 }
@@ -90,9 +102,17 @@ class App extends Component {
                                           </div>
                                       </div>
                                   </BrowserRouter>
-                          : <BrowserRouter>
+                          :
+                          <BrowserRouter>
                               <div>
-                                  <Route exact path={"/"} component={UserHomePage}/>
+                                  <div><UserTopMenu/></div>
+                                  <div>
+                                      <Route exact path={"/"} component={UserHomePage}/>
+                                      <Route exact path={"/user-duyurular"} component={UserDuyuruPage}/>
+                                      <Route exact path={"/user-biyolojik-degerler"} component={UserBiyolojikDegerlerPage}/>
+                                      <Route exact path={"/user-kan-degerleri"} component={UserKanDegerleriPage}/>
+                                      <Route exact path={"/user-faqs"} component={UserFaqsPage}/>
+                                  </div>
                               </div>
                           </BrowserRouter>
                       }

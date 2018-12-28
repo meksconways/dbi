@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Dropdown, Input, Menu,} from 'semantic-ui-react'
+import {Menu} from 'semantic-ui-react'
 import {NavLink} from "react-router-dom";
 
 
@@ -79,3 +79,4 @@ export default class ManagerTopMenu extends Component {
     }
 
 }
+

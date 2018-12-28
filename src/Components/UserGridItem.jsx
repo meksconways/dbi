@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, Icon, Image, Grid, Button} from 'semantic-ui-react'
+import {Button, Card, Grid, Icon} from 'semantic-ui-react'
 import {NavLink} from "react-router-dom";
 
 

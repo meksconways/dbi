@@ -15,7 +15,6 @@ export default class FeedBacksGridItem extends Component{
     }
 
 
-
     deleteFeedback = () =>{
 
       this.setState({buttonLoading:true});
@@ -44,7 +43,6 @@ export default class FeedBacksGridItem extends Component{
       });
 
     };
-
     render() {
         return (
 

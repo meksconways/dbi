@@ -31,8 +31,223 @@ import {
     manager_user_profile_get_url,
     manager_users_url,
     register_url,
-    sign_phone_url
+    sign_phone_url,
+    user_biyolojik_degerler_get_url,
+    user_duyuru_get_url,
+    user_errorreports_post_url,
+    user_faqs_get_url,
+    user_kandegerleri_get_url,
+    user_logout_url,
+    user_profile_delete_url,
+    user_profile_get_url,
+    user_profile_post_url,
+    user_sikayet_post_url
 } from "./ApiUrl";
+
+// USER TARAFI
+export const fetchUserDuyuruGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_duyuru_get_url.method,
+        url:user_duyuru_get_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+
+
+};
+
+export const fetchUserSikayetPost = function (data,callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_sikayet_post_url.method,
+        url:user_sikayet_post_url.url,
+        data:data
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+
+};
+
+export const fetchUserErrorReportsPost = function (data,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_errorreports_post_url.method,
+        url:user_errorreports_post_url.url,
+        data:data
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+export const fetchUserFeedbacksPost = function (data,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_errorreports_post_url.method,
+        url:user_errorreports_post_url.url,
+        data:data
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserFaqsGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_faqs_get_url.method,
+        url:user_faqs_get_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserBiyolojikDegerlerGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_biyolojik_degerler_get_url.method,
+        url:user_biyolojik_degerler_get_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserKanDegerleriGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_kandegerleri_get_url.method,
+        url:user_kandegerleri_get_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserProfileGet = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_profile_get_url.method,
+        url:user_profile_get_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+export const fetchUserProfilePost = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_profile_post_url.method,
+        url:user_profile_post_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserProfileDelete = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_profile_delete_url.method,
+        url:user_profile_delete_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+export const fetchUserLogout = function (callback) {
+
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method: user_logout_url.method,
+        url:user_logout_url.url,
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+};
+
+
+
+
 
 // deneme
 export const fetchGirisYap = function (data,onSuccess,onError) {
@@ -392,23 +607,6 @@ export const fetchManagerProfilePatch = function (data,callback) {
 
 };
 
-export const fetchManagerProfileLogout = function (callback) {
-
-    axios({
-        headers:{
-            'token':localStorage.getItem('token')
-        },
-        method:manager_profile_logout_url.method,
-        url:manager_profile_logout_url.url,
-
-    }).then(res=>{
-        callback(res)
-    })
-        .catch(err => {
-            callback(err)
-        })
-
-};
 
 export const fetchManagerUserProfileGet = function (id,callback) {
 

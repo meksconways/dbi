@@ -150,8 +150,57 @@
   "manager_duyuru_patch": {
     "url": "announcements",
     "method": "patch"
-  }
+  },
 
+
+
+
+
+
+  "user_duyuru_get": {
+    "url": "announcements",
+    "method": "get"
+  },
+  "user_sikayetler_post": {
+    "url": "complaints",
+    "method": "post"
+  },
+  "user_errorreports_post": {
+    "url": "error_reports",
+    "method": "post"
+  },
+  "user_feedbacks_post": {
+    "url": "feedbacks",
+    "method": "post"
+  },
+  "user_faqs_get": {
+    "url": "faqs",
+    "method": "get"
+  },
+  "user_biyolojik_degerler_get": {
+    "url": "biyolojik_degerler",
+    "method": "get"
+  },
+  "user_kandegerleri_get": {
+    "url": "kan_seker_degerler",
+    "method": "get"
+  },
+  "user_profile_get": {
+    "url": "profile",
+    "method": "get"
+  },
+  "user_profile_post": {
+    "url": "profile",
+    "method": "get"
+  },
+  "user_profile_delete": {
+    "url": "profile",
+    "method": "delete"
+  },
+  "user_logout": {
+    "url": "logout",
+    "method": "delete"
+  }
 
 
 }
