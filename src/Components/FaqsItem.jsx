@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Button, Header, Segment} from "semantic-ui-react";
-import DuyuruDetayModal from "./DuyuruDetayModal";
 import FaqsDetayModal from "./FaqsDetayModal";
 
 export default class FaqsItem extends Component{
