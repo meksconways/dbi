@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Button, Card, Grid, Header, Icon} from 'semantic-ui-react'
-import DuyuruDetayModal from "./DuyuruDetayModal";
 import BiyolojikDegerlerDetayModal from "./BiyolojikDegerlerDetayModal";
 
 export default class BiyolojikDegerlerGridItem extends Component {
