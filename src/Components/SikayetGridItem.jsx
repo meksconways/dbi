@@ -65,7 +65,7 @@ export default class SikayetGridItem extends Component{
 
                     <Card.Content>
                         <Card.Header  >Şikayet ID &nbsp; {this.props.data.id}</Card.Header>
-                        <Card.Meta extra style={{color:'#212121'}}>{this.props.data.complaint}</Card.Meta>
+                        <Card.Meta extra style={{color:'#212121'}}>{this.props.data.report}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
                         <Card.Meta style={{color:'#c54545'}}>Oluşturulma Tarihi: &nbsp; {this.props.data.created_at}</Card.Meta>

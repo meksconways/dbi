@@ -48,6 +48,23 @@ export default class UserTopMenu extends Component {
                     >
                         <NavLink to={"/user-faqs"}>SSS</NavLink>
                     </Menu.Item>
+                    <Menu.Item
+                        name='Hata Raporu Gönder'
+                    >
+                        <NavLink to={"/user-errorreport"}>Hata Raporu Gönder</NavLink>
+                    </Menu.Item>
+
+                    <Menu.Item
+                        name='Şikayet Et'
+                    >
+                        <NavLink to={"/user-complaint"}>Şikayet Et</NavLink>
+                    </Menu.Item>
+
+                    <Menu.Item
+                        name='Geri Bildirim Gönder'
+                    >
+                        <NavLink to={"/user-feedback"}>Geri Bildirim Gönder</NavLink>
+                    </Menu.Item>
 
 
                 </Menu>

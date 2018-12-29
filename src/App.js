@@ -24,6 +24,9 @@ import UserKanDegerleriPage from "./Pages/User/UserKanDegerleriPage";
 import UserTopMenu from "./Pages/User/UserTopMenu";
 import UserFaqsPage from "./Pages/User/UserFaqsPage";
 import FGAddPhonePage from "./Pages/Login/FGAddPhonePage";
+import UserHataRaporuPage from "./Pages/User/UserHataRaporuPage";
+import UserSikayetPage from "./Pages/User/UserSikayetPage";
+import UserFeedbackPage from "./Pages/User/UserFeedbackPage";
 
 
 class App extends Component {
@@ -113,6 +116,9 @@ class App extends Component {
                                       <Route exact path={"/user-biyolojik-degerler"} component={UserBiyolojikDegerlerPage}/>
                                       <Route exact path={"/user-kan-degerleri"} component={UserKanDegerleriPage}/>
                                       <Route exact path={"/user-faqs"} component={UserFaqsPage}/>
+                                      <Route exact path={"/user-errorreport"} component={UserHataRaporuPage}/>
+                                      <Route exact path={"/user-complaint"} component={UserSikayetPage}/>
+                                      <Route exact path={"/user-feedback"} component={UserFeedbackPage}/>
                                   </div>
                               </div>
                           </BrowserRouter>

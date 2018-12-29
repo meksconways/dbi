@@ -35,7 +35,7 @@ import {
     user_biyolojik_degerler_get_url,
     user_duyuru_get_url,
     user_errorreports_post_url,
-    user_faqs_get_url,
+    user_faqs_get_url, user_feedbacks_post_url,
     user_kandegerleri_get_url, user_loginwithfb_url, user_loginwithgoogle_url,
     user_logout_url,
     user_profile_delete_url,
@@ -144,8 +144,8 @@ export const fetchUserFeedbacksPost = function (data,callback) {
         headers:{
             'token':localStorage.getItem('token')
         },
-        method: user_errorreports_post_url.method,
-        url:user_errorreports_post_url.url,
+        method: user_feedbacks_post_url.method,
+        url:user_feedbacks_post_url.url,
         data:data
 
     })
