@@ -10,7 +10,7 @@ import {
     manager_duyuru_delete_url,
     manager_duyuru_ekle_url,
     manager_duyuru_get_url,
-    manager_duyuru_patch_url,
+    manager_duyuru_patch_url, manager_errorreports_delete_url, manager_errorreports_get_url,
     manager_faqs_delete_url,
     manager_faqs_get_url,
     manager_faqs_patch_url,
@@ -902,6 +902,44 @@ export const fetchManagerFeedbacksDelete = function (id,callback) {
         },
         method:manager_feedbacks_delete_url.method,
         url:manager_feedbacks_delete_url.url+'/'+id,
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerErrorReportsGet = function (callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_errorreports_get_url.method,
+        url:manager_errorreports_get_url.url
+
+
+    }).then(res=>{
+        callback(res)
+    })
+        .catch(err => {
+            callback(err)
+        })
+
+
+};
+
+export const fetchManagerErrorReportsDelete = function (id,callback) {
+    axios({
+        headers:{
+            'token':localStorage.getItem('token')
+        },
+        method:manager_errorreports_delete_url.method,
+        url:manager_errorreports_delete_url.url+'/'+id
 
 
     }).then(res=>{

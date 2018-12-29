@@ -17,7 +17,10 @@ export default class FeedBacksGridItem extends Component{
 
     deleteFeedback = () =>{
 
+        console.log('btn click');
+
       this.setState({buttonLoading:true});
+
       fetchManagerFeedbacksDelete(this.props.data.id,res=>{
 
           if ((typeof res).toString() === "undefined") {
@@ -65,10 +68,17 @@ export default class FeedBacksGridItem extends Component{
                             <Card.Meta style={{color:'#393939'}}>Oluşturulma Tarihi: &nbsp; {this.props.data.created_at}</Card.Meta>
                         </Card.Content>
                         <Card.Content extra>
-                            <Button color='red' fluid onClick={this.deleteSikayet}
-                                    loading={this.state.buttonLoading}><Icon name={'trash alternate'}
-                            onClick={this.deleteFeedback}
-                            />Kaldır</Button>
+                            <Button color='red' fluid
+                                    loading={this.state.buttonLoading}
+                                    onClick={this.deleteFeedback}
+
+                            >
+
+                                <Icon name={'trash alternate'}
+
+
+                                />Kaldır</Button>
+
 
                         </Card.Content>
                     </Card>

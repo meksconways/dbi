@@ -27,6 +27,7 @@ import FGAddPhonePage from "./Pages/Login/FGAddPhonePage";
 import UserHataRaporuPage from "./Pages/User/UserHataRaporuPage";
 import UserSikayetPage from "./Pages/User/UserSikayetPage";
 import UserFeedbackPage from "./Pages/User/UserFeedbackPage";
+import ManagerErrorPage from "./Pages/Manager/ManagerErrorPage";
 
 
 class App extends Component {
@@ -102,6 +103,7 @@ class App extends Component {
                                               <Route path={"/sikayetler"} component={ManagerSikayetPage}/>
                                               <Route path={"/manager-profile"} component={ManagerProfile}/>
                                               <Route path={"/feedbacks"} component={ManagerGeriBildirimPage}/>
+                                              <Route path={"/errorreports"} component={ManagerErrorPage}/>
                                               <Route path={"/user/:user_id"} component={UserProfile}/>
                                           </div>
                                       </div>

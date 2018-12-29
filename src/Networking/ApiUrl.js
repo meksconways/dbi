@@ -194,6 +194,16 @@ export const manager_feedbacks_delete_url = {
 
 };
 
+export const manager_errorreports_get_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_errorreports_get.url,
+    method:Apiendpoint.manager_errorreports_get.method
+};
+
+export const manager_errorreports_delete_url = {
+    url:Apiendpoint.manager_base_url+Apiendpoint.manager_errorreports_delete.url,
+    method:Apiendpoint.manager_errorreports_delete.method
+};
+
 // user tarafı
 
 

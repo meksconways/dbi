@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import HeaderNameItem from "../../Components/HeaderNameItem";
-import {fetchManagerUserProfileGet} from "../../Networking/ApiFetchService";
+import {fetchManagerUserProfileDelete, fetchManagerUserProfileGet} from "../../Networking/ApiFetchService";
 import {Button, Grid, Header, Icon, Segment} from "semantic-ui-react";
 import KanDegeriEkleModal from "../../Components/KanDegeriEkleModal";
 import BiyolojikDegerEkleModal from "../../Components/BiyolojikDegerEkleModal";
@@ -16,6 +16,7 @@ export default class UserProfile extends Component{
             userId:this.props.match.params.user_id,
             kanDegeriEkleModalVisibility:false,
             biyolojikDegerEkleModalVisibility:false,
+            deleteBtnLoading:false
         }
 
     }
@@ -68,6 +69,35 @@ export default class UserProfile extends Component{
 
         });
 
+
+
+    };
+
+    deleteUser = () => {
+        this.setState({deleteBtnLoading:true});
+
+        fetchManagerUserProfileDelete(this.state.userId,res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    window.location.href = '/';
+
+                }
+
+            }
+
+
+        });
 
 
     };
@@ -150,7 +180,9 @@ export default class UserProfile extends Component{
                                         : null}
 
 
-                                    <Button color='grey' fluid style={{marginTop:'1em'}}>
+                                    <Button color='grey' fluid style={{marginTop:'1em'}}
+                                    onClick={this.deleteUser} loading={this.state.deleteBtnLoading}
+                                    >
                                         <Icon name='trash alternate outline' />
                                         Kullanıcıyı Sil</Button>
 

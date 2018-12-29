@@ -131,7 +131,14 @@
     "url": "faqs",
     "method": "delete"
   },
-
+  "manager_errorreports_get": {
+    "url": "error_reports",
+    "method": "get"
+  },
+  "manager_errorreports_delete": {
+    "url": "error_reports",
+    "method": "delete"
+  },
 
 
 

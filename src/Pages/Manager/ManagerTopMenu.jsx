@@ -67,6 +67,13 @@ export default class ManagerTopMenu extends Component {
                     </Menu.Item>
 
                     <Menu.Item
+                        name='Hata Raporları'
+                    >
+
+                        <NavLink to={"/errorreports"}>Hata Raporları</NavLink>
+                    </Menu.Item>
+
+                    <Menu.Item
                         name='Profilim'
                         >
 
