@@ -274,6 +274,16 @@ export const user_profile_delete_url = {
 
 };
 
+export const user_loginwithfb_url = {
+    url:Apiendpoint.base_url+Apiendpoint.user_loginwithfb.url,
+    method:Apiendpoint.user_loginwithfb.method
+};
+
+export const user_loginwithgoogle_url = {
+    url:Apiendpoint.base_url+Apiendpoint.user_loginwithgoogle.url,
+    method:Apiendpoint.user_loginwithgoogle.method
+};
+
 
 
 

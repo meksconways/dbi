@@ -165,7 +165,7 @@ export default class RegisterPage extends Component{
 
            // localStorage.setItem('token',res.data.data.token);
             //localStorage.setItem('is_admin','0');
-            this.props.history.push('/verification/'+res.data.data.userid);
+            this.props.history.push('/login/');
             console.log('başarılı')
 
 

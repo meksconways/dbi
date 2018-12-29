@@ -1,17 +1,57 @@
 import React, {Component} from 'react'
 import {Button, Card, Divider, Form, Grid, Header, Icon, Input, Segment} from 'semantic-ui-react'
 
-import {NavLink, Redirect, Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {fetchGirisYap, fetchLogin} from "../../Networking/ApiFetchService";
 import ErrorMessage from "../../Components/ErrorMessage";
-import VerificationCode from "./VerificationCode";
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from "react-google-login";
 
+// 375028986601258 app_id for facebook;
+
+//560183493731-sqg46cjedb50b774tajj46vq9ooc30n8.apps.googleusercontent.com   ... google client id
+//UbPDpG_bC1g8G2T0387dYfqw  ... client secret
 
 export default class LoginPage extends Component{
+
+    responseFacebook(response) {
+        console.log(response.email);
+        console.log(response.userID);
+        console.log(response.name);
+
+
+        localStorage.setItem('email',response.email);
+        localStorage.setItem('userid',response.userID);
+        localStorage.setItem('name',response.name);
+        localStorage.setItem('type','fb');
+
+        window.location.href = "/add-phone";
+
+
+
+    };
+
+    responseGoogle = (response) => {
+        console.log(response);
+
+        localStorage.setItem('email',response.profileObj.email);
+        localStorage.setItem('userid',response.profileObj.googleId);
+        localStorage.setItem('name',response.profileObj.name);
+        localStorage.setItem('type','google');
+
+        window.location.href = "/add-phone";
+
+
+    };
+
 
     constructor(props) {
         super(props);
         this.state = {
+            fbData:{
+
+            },
+            phoneAddPageVisibility:false,
             buttonDisabled:true,
             loading:false,
             user_id:0,
@@ -22,6 +62,8 @@ export default class LoginPage extends Component{
             }
         }
     }
+
+
 
     componentWillMount() {
         document.title = 'Giriş Yap • Diyabetli Birey İzlem'
@@ -216,18 +258,27 @@ export default class LoginPage extends Component{
                                                 :null}
 
                                         <Form.Field>
-                                            <Button color='facebook'
-                                                    fluid
+                                            <FacebookLogin
+                                                appId="375028986601258"
+                                                autoLoad={false}
+                                                fields="name,email"
+                                                textButton={'Facebook ile Giriş Yap'}
+                                                callback={this.responseFacebook}
                                             >
-                                                <Icon name='facebook' /> Facebook ile Giriş Yap
-                                            </Button>
+                                            </FacebookLogin>
                                         </Form.Field>
+
+
                                         <Form.Field>
-                                            <Button color='google plus'
-                                                    fluid
+                                            <GoogleLogin
+                                                clientId="246159249813-rm9qb52q1cdfch7suv6e4732goo5e0eh.apps.googleusercontent.com"
+                                                buttonText="Google ile Giriş Yap"
+                                                onSuccess={this.responseGoogle}
+                                                onFailure={this.responseGoogle}
+                                                scope={'profile email'}
                                             >
-                                                <Icon name='google plus' /> Google ile Giriş Yap
-                                            </Button>
+                                            </GoogleLogin>
+
                                         </Form.Field>
 
 

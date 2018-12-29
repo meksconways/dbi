@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
-import {fetchUserProfileGet} from "../../Networking/ApiFetchService";
+import {
+    fetchUserLogout,
+    fetchUserProfileDelete,
+    fetchUserProfileGet,
+    fetchUserProfilePost
+} from "../../Networking/ApiFetchService";
 import HeaderNameItem from "../../Components/HeaderNameItem";
 import {Button, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
 
@@ -10,7 +15,12 @@ export default class UserHomePage extends Component{
         super(props);
         this.state = {
             name:'Profilim',
-            data: {}
+            data: {},
+            guncelleBtnLoading:false,
+            guncelleBtnDisabled:false,
+            logoutBtnLoading:false,
+            hesapSilBtnLoading:false
+
         }
     }
 
@@ -18,6 +28,129 @@ export default class UserHomePage extends Component{
         this.getUserProfile();
         document.title = this.state.name+' • Diyabetli Birey İzlem';
     }
+
+    handleInputChange = (e) =>{
+
+        this.setState({name:e.target.value});
+
+        if (this.state.name.trim().length > 2){
+            this.setState({guncelleBtnDisabled:false})
+        } else{
+            this.setState({guncelleBtnDisabled:true})
+        }
+
+    };
+
+    guncelle = () =>{
+
+        this.setState({guncelleBtnLoading:true});
+        fetchUserProfilePost({name_surname:this.state.name},res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    window.location.href = "/";
+                }
+
+            }
+
+        });
+
+    };
+
+    logout = () => {
+
+        this.setState({logoutBtnLoading:true});
+        fetchUserLogout(res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('is_admin');
+                    window.location.href = "/";
+                }
+
+            }
+
+        });
+
+    };
+
+    hesapSil = () => {
+
+        this.setState({hesapSilBtnLoading:true});
+        fetchUserProfileDelete(res => {
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('is_admin');
+                    window.location.href = "/";
+                }
+
+            }
+
+
+        });
+
+    };
+
+    getUserProfile = () => {
+
+        fetchUserProfileGet(res => {
+
+            if ((typeof res).toString() === "undefined") {
+
+                // route login
+
+            }else{
+
+                if (res.status >= 400 && res.status < 500){
+
+                    //this.setState({errorMessage:res.data.errors})
+
+                } else if (res.status >=200 && res.status < 300) {
+
+                    this.setState({name:res.data.data.name_surname});
+                    this.setState({data:res.data.data});
+                    document.title = this.state.name+' • Diyabetli Birey İzlem';
+
+
+                }
+
+            }
+
+        });
+
+    };
 
     render() {
         return (
@@ -62,24 +195,24 @@ export default class UserHomePage extends Component{
                                             />
                                         </Form.Field>
 
-                                        <Button disabled={this.state.updateButtonDisabled}
-                                                fluid onClick={this.updateProfile} colored color={'green'}
-                                                loading={this.state.updateButtonLoading}
+                                        <Button disabled={this.state.guncelleBtnDisabled}
+                                                fluid onClick={this.guncelle} colored color={'green'}
+                                                loading={this.state.guncelleBtnLoading}
                                         ><Icon name='edit' />
                                            Güncelle
                                         </Button>
 
 
                                         <Button color='red' colored fluid
-                                                loading={this.state.logoutButtonLoading}
+                                                loading={this.state.logoutBtnLoading}
                                                 onClick={this.logout}
                                                 style={{marginTop:'1em'}}>
                                             <Icon name='log out' />
                                             Çıkış Yap
                                         </Button>
                                         <Button color='grey' colored fluid
-                                                loading={this.state.logoutButtonLoading}
-                                                onClick={this.logout}
+                                                loading={this.state.hesapSilBtnLoading}
+                                                onClick={this.hesapSil}
                                                 style={{marginTop:'1em'}}>
                                             <Icon name='trash alternate' />
                                             Hesabı Sil
@@ -122,34 +255,7 @@ export default class UserHomePage extends Component{
         );
     }
 
-    getUserProfile = () => {
 
-        fetchUserProfileGet(res => {
-
-            if ((typeof res).toString() === "undefined") {
-
-                // route login
-
-            }else{
-
-                if (res.status >= 400 && res.status < 500){
-
-                    //this.setState({errorMessage:res.data.errors})
-
-                } else if (res.status >=200 && res.status < 300) {
-
-                    this.setState({name:res.data.data.name_surname});
-                    this.setState({data:res.data.data});
-                    document.title = this.state.name+' • Diyabetli Birey İzlem';
-
-
-                }
-
-            }
-
-        });
-
-    };
 
 
 

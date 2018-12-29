@@ -23,6 +23,7 @@ import UserBiyolojikDegerlerPage from "./Pages/User/UserBiyolojikDegerlerPage";
 import UserKanDegerleriPage from "./Pages/User/UserKanDegerleriPage";
 import UserTopMenu from "./Pages/User/UserTopMenu";
 import UserFaqsPage from "./Pages/User/UserFaqsPage";
+import FGAddPhonePage from "./Pages/Login/FGAddPhonePage";
 
 
 class App extends Component {
@@ -45,7 +46,7 @@ class App extends Component {
                 console.log('11111111');
                 this.setState({isAdmin:false});
                 this.setState({isLogin:"1"});
-                if(window.location.pathname!=="/") window.location.href="/";
+               // if(window.location.pathname!=="/") window.location.href="/";
 
             }else{
                 if (res.status >= 400 && res.status <= 500){
@@ -130,6 +131,7 @@ class App extends Component {
                           <Route  path={"/register"} component={RegisterPage}/>
                           <Route  path={"/login"} component={LoginPage}/>
                           <Route  path={"/verification/:user_id"} component={VerificationCode}/>
+                          <Route  path={"/add-phone"} component={FGAddPhonePage}/>
 
                       </div>
                   </BrowserRouter>

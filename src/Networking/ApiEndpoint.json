@@ -156,7 +156,6 @@
 
 
 
-
   "user_duyuru_get": {
     "url": "announcements",
     "method": "get"
@@ -191,7 +190,7 @@
   },
   "user_profile_post": {
     "url": "profile",
-    "method": "get"
+    "method": "patch"
   },
   "user_profile_delete": {
     "url": "profile",
@@ -200,6 +199,14 @@
   "user_logout": {
     "url": "logout",
     "method": "delete"
+  },
+  "user_loginwithfb": {
+    "url": "facebook_login",
+    "method": "post"
+  },
+  "user_loginwithgoogle": {
+    "url": "google_login",
+    "method": "post"
   }
 
 

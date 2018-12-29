@@ -36,7 +36,7 @@ import {
     user_duyuru_get_url,
     user_errorreports_post_url,
     user_faqs_get_url,
-    user_kandegerleri_get_url,
+    user_kandegerleri_get_url, user_loginwithfb_url, user_loginwithgoogle_url,
     user_logout_url,
     user_profile_delete_url,
     user_profile_get_url,
@@ -61,6 +61,43 @@ export const fetchUserDuyuruGet = function (callback) {
         .catch(error => {
             callback(error)
         })
+
+
+};
+
+export const fetchUserLoginwithFB = function (data,callback) {
+    axios({
+
+        method: user_loginwithfb_url.method,
+        url:user_loginwithfb_url.url,
+        data:data
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+
+
+
+};
+export const fetchUserLoginwithGoogle = function (data,callback) {
+    axios({
+
+        method: user_loginwithgoogle_url.method,
+        url:user_loginwithgoogle_url.url,
+        data:data
+
+    })
+        .then(res=>{
+            callback(res);
+        })
+        .catch(error => {
+            callback(error)
+        })
+
 
 
 };
@@ -191,7 +228,7 @@ export const fetchUserProfileGet = function (callback) {
             callback(error)
         })
 };
-export const fetchUserProfilePost = function (callback) {
+export const fetchUserProfilePost = function (data,callback) {
 
     axios({
         headers:{
@@ -199,6 +236,7 @@ export const fetchUserProfilePost = function (callback) {
         },
         method: user_profile_post_url.method,
         url:user_profile_post_url.url,
+        data:data
 
     })
         .then(res=>{
